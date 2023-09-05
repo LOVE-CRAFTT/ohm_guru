@@ -10,20 +10,24 @@ class CalculationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
+    return const Padding(
+      padding: EdgeInsets.all(20.0),
       child: Row(
         children: [
           Expanded(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Center(
-                  child: Text(tempString),
+                Text("Resistor Parameters"),
+                DropdownMenu(
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry(value: Text("Blue"), label: "Blue"),
+                  ],
                 ),
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: Placeholder(),
           ),
         ],
