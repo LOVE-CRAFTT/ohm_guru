@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/components/title_card.dart';
 import 'package:ohm_guru/components/calculation_page.dart';
-import 'package:ohm_guru/constants/band_constants.dart';
+import 'package:ohm_guru/utilities/band_constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                     child: SizedBox(),
                   ),
                   TabBar(
-                    tabs: bandTypesTabs,
+                    tabs: bandTypes,
                     indicatorColor: Colors.red,
                     onTap: (index) {
                       switch (index) {
