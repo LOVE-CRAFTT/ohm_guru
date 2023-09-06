@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 List<DropdownMenuEntry<Widget>> buildBandColors(Map<String, int> details) {
-  var entries = details.entries.map(
+  return details.entries.map(
     (e) {
       return DropdownMenuEntry(
         value: Text(e.key),
@@ -16,7 +16,6 @@ List<DropdownMenuEntry<Widget>> buildBandColors(Map<String, int> details) {
       );
     },
   ).toList();
-  return entries;
 }
 
 Color getColorFromString(String colorString) {

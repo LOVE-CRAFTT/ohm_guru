@@ -21,4 +21,8 @@ Map<String, int> bandDetails = {
   "White": 9,
 };
 
-//Will also include multiplier, tolerance and PPM -Details
+Map<String, int> multiplierDetails = {};
+
+Map<String, int> toleranceDetails = {};
+
+Map<String, int> ppmDetails = {};
