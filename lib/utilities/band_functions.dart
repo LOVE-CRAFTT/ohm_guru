@@ -1,49 +1,99 @@
 import 'package:flutter/material.dart';
+import 'package:ohm_guru/utilities/band_constants.dart';
 
-List<DropdownMenuEntry<Widget>> buildBandColors(Map<String, int> details) {
-  return details.entries.map(
-    (e) {
-      return DropdownMenuEntry(
-        value: Text(e.key),
-        label: e.key,
+List<DropdownMenuEntry<BandDetails>> buildBandColors() {
+  final List<DropdownMenuEntry<BandDetails>> bandEntries =
+      <DropdownMenuEntry<BandDetails>>[];
+  for (final BandDetails color in BandDetails.values) {
+    bandEntries.add(
+      DropdownMenuEntry(
+        value: color,
+        label: color.label,
         style: TextButton.styleFrom(
-          backgroundColor: getColorFromString(e.key),
+          backgroundColor: color.color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
+          foregroundColor: color.label == "White" || color.label == "Yellow"
+              ? Colors.black
+              : Colors.white,
         ),
-        trailingIcon: Text(e.value.toString()),
-      );
-    },
-  ).toList();
+        trailingIcon: color.trailing,
+      ),
+    );
+  }
+  return bandEntries;
 }
 
-Color getColorFromString(String colorString) {
-  late Color color;
-  if (colorString.toLowerCase() == "black") {
-    color = Colors.black;
-  } else if (colorString.toLowerCase() == "brown") {
-    color = Colors.brown;
-  } else if (colorString.toLowerCase() == "red") {
-    color = Colors.red;
-  } else if (colorString.toLowerCase() == "orange") {
-    color = Colors.orange;
-  } else if (colorString.toLowerCase() == "yellow") {
-    color = Colors.yellow;
-  } else if (colorString.toLowerCase() == "green") {
-    color = Colors.green;
-  } else if (colorString.toLowerCase() == "blue") {
-    color = Colors.blue;
-  } else if (colorString.toLowerCase() == "violet") {
-    color = Colors.deepPurpleAccent;
-  } else if (colorString.toLowerCase() == "grey") {
-    color = Colors.grey;
-  } else if (colorString.toLowerCase() == "white") {
-    color = Colors.white;
-  } else if (colorString.toLowerCase() == "gold") {
-    color = const Color(0xffc08327);
-  } else if (colorString.toLowerCase() == "silver") {
-    color = const Color(0xffbfbebf);
+List<DropdownMenuEntry<MultiplierDetails>> buildMultiplierBandColors() {
+  final List<DropdownMenuEntry<MultiplierDetails>> bandEntries =
+      <DropdownMenuEntry<MultiplierDetails>>[];
+  for (final MultiplierDetails color in MultiplierDetails.values) {
+    bandEntries.add(
+      DropdownMenuEntry(
+        value: color,
+        label: color.label,
+        style: TextButton.styleFrom(
+          backgroundColor: color.color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          foregroundColor: color.label == "White" || color.label == "Yellow"
+              ? Colors.black
+              : Colors.white,
+        ),
+        trailingIcon: color.trailing,
+      ),
+    );
   }
-  return color;
+  return bandEntries;
+}
+
+List<DropdownMenuEntry<ToleranceDetails>> buildToleranceBandColors() {
+  final List<DropdownMenuEntry<ToleranceDetails>> bandEntries =
+      <DropdownMenuEntry<ToleranceDetails>>[];
+  for (final ToleranceDetails color in ToleranceDetails.values) {
+    bandEntries.add(
+      DropdownMenuEntry(
+        value: color,
+        label: color.label,
+        style: TextButton.styleFrom(
+          backgroundColor: color.color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          foregroundColor: color.label == "White" || color.label == "Yellow"
+              ? Colors.black
+              : Colors.white,
+          enableFeedback: false,
+        ),
+        trailingIcon: color.trailing,
+      ),
+    );
+  }
+  return bandEntries;
+}
+
+List<DropdownMenuEntry<PPMDetails>> buildPPMBandColors() {
+  final List<DropdownMenuEntry<PPMDetails>> bandEntries =
+      <DropdownMenuEntry<PPMDetails>>[];
+  for (final PPMDetails color in PPMDetails.values) {
+    bandEntries.add(
+      DropdownMenuEntry(
+        value: color,
+        label: color.label,
+        style: TextButton.styleFrom(
+          backgroundColor: color.color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          foregroundColor: color.label == "White" || color.label == "Yellow"
+              ? Colors.black
+              : Colors.white,
+        ),
+        trailingIcon: color.trailing,
+      ),
+    );
+  }
+  return bandEntries;
 }

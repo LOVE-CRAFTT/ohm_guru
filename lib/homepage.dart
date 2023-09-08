@@ -67,13 +67,13 @@ class _HomePageState extends State<HomePage> {
                     child: TabBarView(
                       children: [
                         CalculationPage(
-                          tempString: "Resistor Parameters 1",
+                          bandType: 4,
                         ),
                         CalculationPage(
-                          tempString: "Resistor Parameters 2",
+                          bandType: 5,
                         ),
                         CalculationPage(
-                          tempString: "Resistor Parameters 3",
+                          bandType: 6,
                         ),
                       ],
                     ),

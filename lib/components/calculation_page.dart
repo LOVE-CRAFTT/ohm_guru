@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ohm_guru/utilities/band_constants.dart';
 import 'package:ohm_guru/utilities/band_functions.dart';
 
 class CalculationPage extends StatelessWidget {
   const CalculationPage({
     super.key,
-    required this.tempString,
+    required this.bandType,
   });
 
-  final String tempString;
+  final int bandType;
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +24,85 @@ class CalculationPage extends StatelessWidget {
                   children: [
                     const Text("Resistor Parameters"),
                     DropdownMenu(
-                      dropdownMenuEntries: buildBandColors(bandDetails),
+                      dropdownMenuEntries: buildBandColors(),
                       label: const Text("First Band"),
                       width: constraints.maxWidth,
                       inputDecorationTheme: const InputDecorationTheme(
                         filled: true,
                         fillColor: Colors.blue,
                       ),
-
-                      //TODO refactor trailing icon so it's its own component and is responsive to change
-                      trailingIcon: const Row(
-                        children: [
-                          Expanded(
-                            child: Text("1"),
-                          ),
-                          Expanded(
-                            child: Icon(Icons.arrow_drop_down),
-                          ),
-                        ],
-                      ),
+                      onSelected: (band) {
+                        debugPrint(band.toString());
+                      },
+                      enableSearch: false,
                     ),
+                    DropdownMenu(
+                      dropdownMenuEntries: buildBandColors(),
+                      label: const Text("Second Band"),
+                      width: constraints.maxWidth,
+                      inputDecorationTheme: const InputDecorationTheme(
+                        filled: true,
+                        fillColor: Colors.blue,
+                      ),
+                      onSelected: (band) {
+                        debugPrint(band.toString());
+                      },
+                      enableSearch: false,
+                    ),
+                    if (bandType == 5 || bandType == 6)
+                      DropdownMenu(
+                        dropdownMenuEntries: buildBandColors(),
+                        label: const Text("Third Band"),
+                        width: constraints.maxWidth,
+                        inputDecorationTheme: const InputDecorationTheme(
+                          filled: true,
+                          fillColor: Colors.blue,
+                        ),
+                        onSelected: (band) {
+                          debugPrint(band.toString());
+                        },
+                        enableSearch: false,
+                      ),
+                    DropdownMenu(
+                      dropdownMenuEntries: buildMultiplierBandColors(),
+                      label: const Text("Multiplier"),
+                      width: constraints.maxWidth,
+                      inputDecorationTheme: const InputDecorationTheme(
+                        filled: true,
+                        fillColor: Colors.blue,
+                      ),
+                      onSelected: (band) {
+                        debugPrint(band.toString());
+                      },
+                      enableSearch: false,
+                    ),
+                    DropdownMenu(
+                      dropdownMenuEntries: buildToleranceBandColors(),
+                      label: const Text("Tolerance"),
+                      width: constraints.maxWidth,
+                      inputDecorationTheme: const InputDecorationTheme(
+                        filled: true,
+                        fillColor: Colors.blue,
+                      ),
+                      onSelected: (band) {
+                        debugPrint(band.toString());
+                      },
+                      enableSearch: false,
+                    ),
+                    if (bandType == 6)
+                      DropdownMenu(
+                        dropdownMenuEntries: buildPPMBandColors(),
+                        label: const Text("PPM"),
+                        width: constraints.maxWidth,
+                        inputDecorationTheme: const InputDecorationTheme(
+                          filled: true,
+                          fillColor: Colors.blue,
+                        ),
+                        onSelected: (band) {
+                          debugPrint(band.toString());
+                        },
+                        enableSearch: false,
+                      ),
                   ],
                 );
               },
