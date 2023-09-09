@@ -16,6 +16,8 @@ class CalculationPage extends StatefulWidget {
 }
 
 class _CalculationPageState extends State<CalculationPage> {
+  //TODO reduce size of manual selector, refactor dropdownmenubuilder function
+
   @override
   Widget build(BuildContext context) {
     return Row(
