@@ -97,3 +97,8 @@ List<DropdownMenuEntry<PPMDetails>> buildPPMBandColors() {
   }
   return bandEntries;
 }
+
+void clearSelection() {
+  selectedBand1 = selectedBand2 = selectedBand3 =
+      selectedMultiplierBand = selectedToleranceBand = selectedPPMBand = null;
+}

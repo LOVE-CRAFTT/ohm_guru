@@ -161,6 +161,11 @@ class _CalculationPageState extends State<CalculationPage> {
                     TextButton(
                       onPressed: () {
                         debugPrint("Pressed the button");
+                        setState(
+                          () {
+                            clearSelection();
+                          },
+                        );
                       },
                       style: clearButtonTextStyle(),
                       child: const Text("Clear"),
