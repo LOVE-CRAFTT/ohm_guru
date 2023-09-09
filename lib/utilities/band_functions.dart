@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/utilities/band_constants.dart';
+import 'package:ohm_guru/utilities/style_constants.dart';
 
 List<DropdownMenuEntry<BandDetails>> buildBandColors() {
   final List<DropdownMenuEntry<BandDetails>> bandEntries =
@@ -9,15 +10,7 @@ List<DropdownMenuEntry<BandDetails>> buildBandColors() {
       DropdownMenuEntry(
         value: color,
         label: color.label,
-        style: TextButton.styleFrom(
-          backgroundColor: color.color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          foregroundColor: color.label == "White" || color.label == "Yellow"
-              ? Colors.black
-              : Colors.white,
-        ),
+        style: dropDownMenuEntryStyle(color: color.color, label: color.label),
         trailingIcon: color.trailing,
       ),
     );
@@ -33,15 +26,7 @@ List<DropdownMenuEntry<MultiplierDetails>> buildMultiplierBandColors() {
       DropdownMenuEntry(
         value: color,
         label: color.label,
-        style: TextButton.styleFrom(
-          backgroundColor: color.color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          foregroundColor: color.label == "White" || color.label == "Yellow"
-              ? Colors.black
-              : Colors.white,
-        ),
+        style: dropDownMenuEntryStyle(color: color.color, label: color.label),
         trailingIcon: color.trailing,
       ),
     );
@@ -57,16 +42,7 @@ List<DropdownMenuEntry<ToleranceDetails>> buildToleranceBandColors() {
       DropdownMenuEntry(
         value: color,
         label: color.label,
-        style: TextButton.styleFrom(
-          backgroundColor: color.color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          foregroundColor: color.label == "White" || color.label == "Yellow"
-              ? Colors.black
-              : Colors.white,
-          enableFeedback: false,
-        ),
+        style: dropDownMenuEntryStyle(color: color.color, label: color.label),
         trailingIcon: color.trailing,
       ),
     );
@@ -82,15 +58,7 @@ List<DropdownMenuEntry<PPMDetails>> buildPPMBandColors() {
       DropdownMenuEntry(
         value: color,
         label: color.label,
-        style: TextButton.styleFrom(
-          backgroundColor: color.color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          foregroundColor: color.label == "White" || color.label == "Yellow"
-              ? Colors.black
-              : Colors.white,
-        ),
+        style: dropDownMenuEntryStyle(color: color.color, label: color.label),
         trailingIcon: color.trailing,
       ),
     );

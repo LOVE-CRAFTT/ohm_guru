@@ -13,3 +13,14 @@ ButtonStyle? clearButtonTextStyle() {
     minimumSize: const Size(200.0, 50.0),
   );
 }
+
+ButtonStyle? dropDownMenuEntryStyle({Color? color, required String label}) {
+  return TextButton.styleFrom(
+    backgroundColor: color,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10.0),
+    ),
+    foregroundColor:
+        label == "White" || label == "Yellow" ? Colors.black : Colors.white,
+  );
+}
