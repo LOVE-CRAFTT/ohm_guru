@@ -158,6 +158,13 @@ class _CalculationPageState extends State<CalculationPage> {
                         ),
                         initialSelection: selectedPPMBand,
                       ),
+                    DropdownMenu(
+                      dropdownMenuEntries: buildOhmTypes,
+                      label: const Text("Enter Value"),
+                      width: constraints.maxWidth,
+                      enableSearch: false,
+                      enableFilter: false,
+                    ),
                     TextButton(
                       onPressed: () {
                         debugPrint("Pressed the button");
