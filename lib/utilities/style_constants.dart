@@ -5,3 +5,11 @@ TextStyle? dropDownMenuTextStyle({Color? selectedColor}) {
       ? const TextStyle(color: Colors.black)
       : const TextStyle(color: Colors.white);
 }
+
+ButtonStyle? clearButtonTextStyle() {
+  return TextButton.styleFrom(
+    backgroundColor: const Color(0xff0058c5),
+    foregroundColor: Colors.white,
+    minimumSize: const Size(200.0, 50.0),
+  );
+}

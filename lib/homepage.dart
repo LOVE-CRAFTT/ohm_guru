@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   TabBar(
                     tabs: bandTypes,
-                    indicatorColor: Colors.red,
+                    indicatorColor: const Color(0xff0058c5),
                     onTap: (index) {
                       switch (index) {
                         case 0:

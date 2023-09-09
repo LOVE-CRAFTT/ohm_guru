@@ -158,6 +158,13 @@ class _CalculationPageState extends State<CalculationPage> {
                         ),
                         initialSelection: selectedPPMBand,
                       ),
+                    TextButton(
+                      onPressed: () {
+                        debugPrint("Pressed the button");
+                      },
+                      style: clearButtonTextStyle(),
+                      child: const Text("Clear"),
+                    ),
                   ],
                 );
               },
