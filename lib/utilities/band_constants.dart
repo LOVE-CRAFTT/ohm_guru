@@ -23,7 +23,7 @@ enum BandDetails {
   const BandDetails(this.label, this.color, this.value, this.trailing);
   final String label;
   final Color color;
-  final int value;
+  final num value;
   final Text trailing;
 }
 
