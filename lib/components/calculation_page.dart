@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/utilities/band_functions.dart';
 import 'package:ohm_guru/utilities/style_constants.dart';
+import 'package:ohm_guru/utilities/band_constants.dart';
 
 class CalculationPage extends StatefulWidget {
   const CalculationPage({
@@ -15,13 +16,6 @@ class CalculationPage extends StatefulWidget {
 }
 
 class _CalculationPageState extends State<CalculationPage> {
-  Color? selectedBand1Color;
-  Color? selectedBand2Color;
-  Color? selectedBand3Color;
-  Color? selectedMultiplierBandColor;
-  Color? selectedToleranceBandColor;
-  Color? selectedPPMBandColor;
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -42,18 +36,20 @@ class _CalculationPageState extends State<CalculationPage> {
                       width: constraints.maxWidth,
                       inputDecorationTheme: InputDecorationTheme(
                         filled: true,
-                        fillColor: selectedBand1Color,
+                        fillColor: selectedBand1?.color,
                       ),
                       onSelected: (band) {
                         setState(
                           () {
-                            selectedBand1Color = band?.color;
+                            selectedBand1 = band;
                           },
                         );
                       },
                       enableSearch: false,
                       textStyle: dropDownMenuTextStyle(
-                          selectedColor: selectedBand1Color),
+                        selectedColor: selectedBand1?.color,
+                      ),
+                      initialSelection: selectedBand1,
                     ),
                     DropdownMenu(
                       dropdownMenuEntries: buildBandColors(),
@@ -61,18 +57,20 @@ class _CalculationPageState extends State<CalculationPage> {
                       width: constraints.maxWidth,
                       inputDecorationTheme: InputDecorationTheme(
                         filled: true,
-                        fillColor: selectedBand2Color,
+                        fillColor: selectedBand2?.color,
                       ),
                       onSelected: (band) {
                         setState(
                           () {
-                            selectedBand2Color = band?.color;
+                            selectedBand2 = band;
                           },
                         );
                       },
                       enableSearch: false,
                       textStyle: dropDownMenuTextStyle(
-                          selectedColor: selectedBand2Color),
+                        selectedColor: selectedBand2?.color,
+                      ),
+                      initialSelection: selectedBand2,
                     ),
                     if (widget.bandType == 5 || widget.bandType == 6)
                       DropdownMenu(
@@ -81,18 +79,20 @@ class _CalculationPageState extends State<CalculationPage> {
                         width: constraints.maxWidth,
                         inputDecorationTheme: InputDecorationTheme(
                           filled: true,
-                          fillColor: selectedBand3Color,
+                          fillColor: selectedBand3?.color,
                         ),
                         onSelected: (band) {
                           setState(
                             () {
-                              selectedBand3Color = band?.color;
+                              selectedBand3 = band;
                             },
                           );
                         },
                         enableSearch: false,
                         textStyle: dropDownMenuTextStyle(
-                            selectedColor: selectedBand3Color),
+                          selectedColor: selectedBand3?.color,
+                        ),
+                        initialSelection: selectedBand3,
                       ),
                     DropdownMenu(
                       dropdownMenuEntries: buildMultiplierBandColors(),
@@ -100,18 +100,20 @@ class _CalculationPageState extends State<CalculationPage> {
                       width: constraints.maxWidth,
                       inputDecorationTheme: InputDecorationTheme(
                         filled: true,
-                        fillColor: selectedMultiplierBandColor,
+                        fillColor: selectedMultiplierBand?.color,
                       ),
                       onSelected: (multiplier) {
                         setState(
                           () {
-                            selectedMultiplierBandColor = multiplier?.color;
+                            selectedMultiplierBand = multiplier;
                           },
                         );
                       },
                       enableSearch: false,
                       textStyle: dropDownMenuTextStyle(
-                          selectedColor: selectedMultiplierBandColor),
+                        selectedColor: selectedMultiplierBand?.color,
+                      ),
+                      initialSelection: selectedMultiplierBand,
                     ),
                     DropdownMenu(
                       dropdownMenuEntries: buildToleranceBandColors(),
@@ -119,18 +121,20 @@ class _CalculationPageState extends State<CalculationPage> {
                       width: constraints.maxWidth,
                       inputDecorationTheme: InputDecorationTheme(
                         filled: true,
-                        fillColor: selectedToleranceBandColor,
+                        fillColor: selectedToleranceBand?.color,
                       ),
                       onSelected: (tolerance) {
                         setState(
                           () {
-                            selectedToleranceBandColor = tolerance?.color;
+                            selectedToleranceBand = tolerance;
                           },
                         );
                       },
                       enableSearch: false,
                       textStyle: dropDownMenuTextStyle(
-                          selectedColor: selectedToleranceBandColor),
+                        selectedColor: selectedToleranceBand?.color,
+                      ),
+                      initialSelection: selectedToleranceBand,
                     ),
                     if (widget.bandType == 6)
                       DropdownMenu(
@@ -139,18 +143,20 @@ class _CalculationPageState extends State<CalculationPage> {
                         width: constraints.maxWidth,
                         inputDecorationTheme: InputDecorationTheme(
                           filled: true,
-                          fillColor: selectedPPMBandColor,
+                          fillColor: selectedPPMBand?.color,
                         ),
                         onSelected: (ppm) {
                           setState(
                             () {
-                              selectedPPMBandColor = ppm?.color;
+                              selectedPPMBand = ppm;
                             },
                           );
                         },
                         enableSearch: false,
                         textStyle: dropDownMenuTextStyle(
-                            selectedColor: selectedPPMBandColor),
+                          selectedColor: selectedPPMBand?.color,
+                        ),
+                        initialSelection: selectedPPMBand,
                       ),
                   ],
                 );

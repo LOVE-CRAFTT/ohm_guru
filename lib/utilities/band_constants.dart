@@ -8,6 +8,15 @@ List<Text> bandTypes = const [
   Text("6 Band"),
 ];
 
+//=====================
+BandDetails? selectedBand1;
+BandDetails? selectedBand2;
+BandDetails? selectedBand3;
+MultiplierDetails? selectedMultiplierBand;
+ToleranceDetails? selectedToleranceBand;
+PPMDetails? selectedPPMBand;
+//=====================
+
 enum BandDetails {
   black("Black", Colors.black, 0, Text("0")),
   brown("Brown", Colors.brown, 1, Text("1")),
