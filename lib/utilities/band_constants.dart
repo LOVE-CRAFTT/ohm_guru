@@ -48,7 +48,7 @@ enum MultiplierDetails {
   grey("Grey", Colors.grey, 100000000, Text("×100 MΩ")),
   white("White", Colors.white, 1000000000, Text("×1 GΩ")),
   gold("Gold", Color(0xffc08327), 0.1, Text("×0.1 Ω")),
-  silver("Silver", Colors.black, 0.01, Text("×0.01 Ω"));
+  silver("Silver", Color(0xffbfbebf), 0.01, Text("×0.01 Ω"));
 
   const MultiplierDetails(this.label, this.color, this.value, this.trailing);
   final String label;
@@ -65,7 +65,7 @@ enum ToleranceDetails {
   violet("Violet", Colors.deepPurpleAccent, 0.1, Text("±0.1%")),
   grey("Grey", Colors.grey, 0.05, Text("±0.05%")),
   gold("Gold", Color(0xffc08327), 5, Text("±5%")),
-  silver("Silver", Colors.black, 10, Text("±10%"));
+  silver("Silver", Color(0xffbfbebf), 10, Text("±10%"));
 
   const ToleranceDetails(this.label, this.color, this.value, this.trailing);
   final String label;
