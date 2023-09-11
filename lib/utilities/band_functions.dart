@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/utilities/band_constants.dart';
 import 'package:ohm_guru/utilities/style_constants.dart';
+import 'package:ohm_guru/utilities/text_controllers.dart';
 
 List<DropdownMenuEntry<BandDetails>> buildBandColors() {
   final List<DropdownMenuEntry<BandDetails>> bandEntries =
@@ -69,4 +70,10 @@ List<DropdownMenuEntry<PPMDetails>> buildPPMBandColors() {
 void clearSelection() {
   selectedBand1 = selectedBand2 = selectedBand3 =
       selectedMultiplierBand = selectedToleranceBand = selectedPPMBand = null;
+  band1TextController.clear();
+  band2TextController.clear();
+  band3TextController.clear();
+  multiplierBandTextController.clear();
+  toleranceBandTextController.clear();
+  ppmBandTextController.clear();
 }

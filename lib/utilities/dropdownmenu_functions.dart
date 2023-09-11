@@ -6,6 +6,7 @@ DropdownMenu buildDropDownMenu({
   required BoxConstraints constraints,
   required List<DropdownMenuEntry> dropdownMenuEntries,
   required Text label,
+  required TextEditingController controller,
   void Function(Object?)? onSelected,
   BandDetails? selectedBand,
   MultiplierDetails? selectedMultiplier,
@@ -56,5 +57,6 @@ DropdownMenu buildDropDownMenu({
       selectedColor: getLocalColor(),
     ),
     initialSelection: getSelected(),
+    controller: controller,
   );
 }

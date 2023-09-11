@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ohm_guru/utilities/band_functions.dart';
 import 'package:ohm_guru/utilities/band_constants.dart';
 import 'package:ohm_guru/utilities/dropdownmenu_functions.dart';
+import 'package:ohm_guru/utilities/text_controllers.dart';
 import 'package:ohm_guru/components/clear_button.dart';
 
 class CalculationPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class CalculationPage extends StatefulWidget {
 }
 
 class _CalculationPageState extends State<CalculationPage> {
-  //TODO reduce size of manual selector, figure out (text?)controller
+  //TODO reduce size of manual selector
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,7 @@ class _CalculationPageState extends State<CalculationPage> {
                         );
                       },
                       selectedBand: selectedBand1,
+                      controller: band1TextController,
                     ),
                     buildDropDownMenu(
                       constraints: constraints,
@@ -58,6 +60,7 @@ class _CalculationPageState extends State<CalculationPage> {
                         );
                       },
                       selectedBand: selectedBand2,
+                      controller: band2TextController,
                     ),
                     if (widget.bandType == 5 || widget.bandType == 6)
                       buildDropDownMenu(
@@ -72,6 +75,7 @@ class _CalculationPageState extends State<CalculationPage> {
                           );
                         },
                         selectedBand: selectedBand3,
+                        controller: band3TextController,
                       ),
                     buildDropDownMenu(
                       constraints: constraints,
@@ -85,6 +89,7 @@ class _CalculationPageState extends State<CalculationPage> {
                         );
                       },
                       selectedMultiplier: selectedMultiplierBand,
+                      controller: multiplierBandTextController,
                     ),
                     buildDropDownMenu(
                       constraints: constraints,
@@ -98,6 +103,7 @@ class _CalculationPageState extends State<CalculationPage> {
                         );
                       },
                       selectedTolerance: selectedToleranceBand,
+                      controller: toleranceBandTextController,
                     ),
                     if (widget.bandType == 6)
                       buildDropDownMenu(
@@ -112,12 +118,14 @@ class _CalculationPageState extends State<CalculationPage> {
                           );
                         },
                         selectedPPM: selectedPPMBand,
+                        controller: ppmBandTextController,
                       ),
                     DropdownMenu(
                       dropdownMenuEntries: buildOhmTypes,
                       label: const Text("Enter Value"),
                       width: constraints.maxWidth,
                       enableSearch: false,
+                      // initialSelection: ,
                     ),
                     ClearButton(
                       clearFunction: () {
