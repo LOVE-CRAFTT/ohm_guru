@@ -120,7 +120,7 @@ class _CalculationPageState extends State<CalculationPage> {
                         controller: ppmBandTextController,
                       ),
                     ManualEntry(
-                      onSelected: (unit) {
+                      onSelectOhmUnit: (unit) {
                         setState(
                           () {
                             selectedOhmUnit = unit;

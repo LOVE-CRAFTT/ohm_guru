@@ -6,10 +6,10 @@ import 'package:ohm_guru/utilities/text_controllers.dart';
 class ManualEntry extends StatelessWidget {
   const ManualEntry({
     super.key,
-    required this.onSelected,
+    required this.onSelectOhmUnit,
   });
 
-  final void Function(String?)? onSelected;
+  final void Function(String?)? onSelectOhmUnit;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class ManualEntry extends StatelessWidget {
               dropdownMenuEntries: buildOhmTypes,
               enableSearch: false,
               initialSelection: selectedOhmUnit,
-              onSelected: onSelected,
+              onSelected: onSelectOhmUnit,
             ),
           ),
         ),
