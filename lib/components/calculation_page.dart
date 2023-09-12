@@ -119,7 +119,15 @@ class _CalculationPageState extends State<CalculationPage> {
                         selectedPPM: selectedPPMBand,
                         controller: ppmBandTextController,
                       ),
-                    const ManualEntry(),
+                    ManualEntry(
+                      onSelected: (unit) {
+                        setState(
+                          () {
+                            selectedOhmUnit = unit;
+                          },
+                        );
+                      },
+                    ),
                     ClearButton(
                       clearFunction: () {
                         setState(

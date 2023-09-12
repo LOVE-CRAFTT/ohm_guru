@@ -7,6 +7,3 @@ TextEditingController multiplierBandTextController = TextEditingController();
 TextEditingController toleranceBandTextController = TextEditingController();
 TextEditingController ppmBandTextController = TextEditingController();
 TextEditingController manualInputTextController = TextEditingController();
-
-//======TEXT CONTROLLER FOR UNIT DROPDOWNMENU
-TextEditingController manualInputUnitController = TextEditingController();

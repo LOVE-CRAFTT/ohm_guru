@@ -80,5 +80,4 @@ void clearSelection() {
 
   //=====Reset ohm type to Ω
   selectedOhmUnit = ohmUnits.first;
-  manualInputUnitController.text = ohmUnits.first;
 }

@@ -90,8 +90,8 @@ enum PPMDetails {
 }
 
 var ohmUnits = ["Ω", "kΩ", "MΩ", "GΩ"];
-var selectedOhmUnit = ohmUnits.first;
-List<DropdownMenuEntry> buildOhmTypes = [
+String? selectedOhmUnit = ohmUnits.first;
+List<DropdownMenuEntry<String>> buildOhmTypes = [
   for (var ohmUnit in ohmUnits)
     DropdownMenuEntry(
       value: ohmUnit,
