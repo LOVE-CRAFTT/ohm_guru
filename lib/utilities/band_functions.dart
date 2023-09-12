@@ -76,4 +76,8 @@ void clearSelection() {
   multiplierBandTextController.clear();
   toleranceBandTextController.clear();
   ppmBandTextController.clear();
+  manualInputTextController.clear();
+
+  //=====Reset ohm type to Ω
+  manualInputUnitController.text = ohmUnits.first;
 }

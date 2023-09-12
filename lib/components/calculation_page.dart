@@ -4,6 +4,7 @@ import 'package:ohm_guru/utilities/band_constants.dart';
 import 'package:ohm_guru/utilities/dropdownmenu_functions.dart';
 import 'package:ohm_guru/utilities/text_controllers.dart';
 import 'package:ohm_guru/components/clear_button.dart';
+import 'package:ohm_guru/components/manual_entry.dart';
 
 class CalculationPage extends StatefulWidget {
   const CalculationPage({
@@ -118,13 +119,7 @@ class _CalculationPageState extends State<CalculationPage> {
                         selectedPPM: selectedPPMBand,
                         controller: ppmBandTextController,
                       ),
-                    DropdownMenu(
-                      dropdownMenuEntries: buildOhmTypes,
-                      label: const Text("Enter Value"),
-                      width: constraints.maxWidth,
-                      enableSearch: false,
-                      // initialSelection: ,
-                    ),
+                    const ManualEntry(),
                     ClearButton(
                       clearFunction: () {
                         setState(

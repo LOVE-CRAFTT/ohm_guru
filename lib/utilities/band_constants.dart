@@ -89,11 +89,12 @@ enum PPMDetails {
   final Text trailing;
 }
 
-var ohmTypes = ["Ω", "kΩ", "MΩ", "GΩ"];
+var ohmUnits = ["Ω", "kΩ", "MΩ", "GΩ"];
+var selectedOhmUnit = ohmUnits.first;
 List<DropdownMenuEntry> buildOhmTypes = [
-  for (var ohmType in ohmTypes)
+  for (var ohmUnit in ohmUnits)
     DropdownMenuEntry(
-      value: ohmType,
-      label: ohmType,
+      value: ohmUnit,
+      label: ohmUnit,
     ),
 ];
