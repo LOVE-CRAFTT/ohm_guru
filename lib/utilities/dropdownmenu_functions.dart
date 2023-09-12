@@ -28,21 +28,6 @@ DropdownMenu buildDropDownMenu({
     }
   }
 
-  //=====
-  Object? getSelected() {
-    if (selectedBand != null) {
-      return selectedBand;
-    } else if (selectedMultiplier != null) {
-      return selectedMultiplier;
-    } else if (selectedTolerance != null) {
-      return selectedTolerance;
-    } else if (selectedPPM != null) {
-      return selectedPPM;
-    } else {
-      return null;
-    }
-  }
-
   return DropdownMenu(
     dropdownMenuEntries: dropdownMenuEntries,
     label: label,
@@ -56,7 +41,6 @@ DropdownMenu buildDropDownMenu({
     textStyle: dropDownMenuTextStyle(
       selectedColor: getLocalColor(),
     ),
-    initialSelection: getSelected(),
     controller: controller,
   );
 }
