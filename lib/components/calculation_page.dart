@@ -143,10 +143,43 @@ class _CalculationPageState extends State<CalculationPage> {
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Placeholder(),
+            padding: const EdgeInsets.all(20.0),
+            child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+              return Column(
+                children: [
+                  const Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Output",
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: SizedBox(
+                      width: constraints.maxWidth,
+                      child: const Image(
+                        image: AssetImage("assets/resistor.png"),
+                      ),
+                    ),
+                  ),
+                  const Expanded(
+                    flex: 2,
+                    child: Text(
+                      "Resistor Value:",
+                      style: TextStyle(fontSize: 40.0),
+                    ),
+                  ),
+                ],
+              );
+            }),
           ),
         ),
       ],
