@@ -171,7 +171,7 @@ class _CalculationPageState extends State<CalculationPage> {
                         ),
                       ),
 
-                      //TODO: Refactor Alignment widget [dynamicColorBand] so its its own widget, properties would be alignment, color and container height
+                      //TODO: Refactor Alignment widget [dynamicColorBand] so its its own widget, properties would be alignment, dependent bandType, color and container height
                       DynamicColorBand(),
                     ],
                   ),
