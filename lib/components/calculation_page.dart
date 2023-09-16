@@ -5,6 +5,7 @@ import 'package:ohm_guru/utilities/dropdownmenu_functions.dart';
 import 'package:ohm_guru/utilities/text_controllers.dart';
 import 'package:ohm_guru/components/clear_button.dart';
 import 'package:ohm_guru/components/manual_entry.dart';
+import 'package:ohm_guru/components/dynamic_color_band.dart';
 
 class CalculationPage extends StatefulWidget {
   const CalculationPage({
@@ -143,43 +144,47 @@ class _CalculationPageState extends State<CalculationPage> {
             ),
           ),
         ),
-        Expanded(
+        const Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) {
-              return Column(
-                children: [
-                  const Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          "Output",
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Output",
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 4,
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Image(
+                          image: AssetImage("assets/resistor.png"),
                         ),
                       ),
-                    ),
+
+                      //TODO: Refactor Alignment widget [dynamicColorBand] so its its own widget, properties would be alignment, dependent bandType, color and container height
+                      DynamicColorBand(),
+                    ],
                   ),
-                  Expanded(
-                    flex: 4,
-                    child: SizedBox(
-                      width: constraints.maxWidth,
-                      child: const Image(
-                        image: AssetImage("assets/resistor.png"),
-                      ),
-                    ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    "Resistor Value:",
+                    style: TextStyle(fontSize: 40.0),
                   ),
-                  const Expanded(
-                    flex: 2,
-                    child: Text(
-                      "Resistor Value:",
-                      style: TextStyle(fontSize: 40.0),
-                    ),
-                  ),
-                ],
-              );
-            }),
+                ),
+              ],
+            ),
           ),
         ),
       ],
