@@ -5,6 +5,7 @@ import 'package:ohm_guru/utilities/dropdownmenu_functions.dart';
 import 'package:ohm_guru/utilities/text_controllers.dart';
 import 'package:ohm_guru/components/clear_button.dart';
 import 'package:ohm_guru/components/manual_entry.dart';
+import 'package:ohm_guru/components/dynamic_color_band.dart';
 
 class CalculationPage extends StatefulWidget {
   const CalculationPage({
@@ -143,12 +144,12 @@ class _CalculationPageState extends State<CalculationPage> {
             ),
           ),
         ),
-        Expanded(
+        const Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(20.0),
             child: Column(
               children: [
-                const Expanded(
+                Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(15.0),
                     child: Align(
@@ -163,7 +164,7 @@ class _CalculationPageState extends State<CalculationPage> {
                   flex: 4,
                   child: Stack(
                     children: [
-                      const Align(
+                      Align(
                         alignment: Alignment.topCenter,
                         child: Image(
                           image: AssetImage("assets/resistor.png"),
@@ -171,41 +172,11 @@ class _CalculationPageState extends State<CalculationPage> {
                       ),
 
                       //TODO: Refactor Alignment widget [dynamicColorBand] so its its own widget, properties would be alignment, color and container height
-                      Align(
-                        alignment: const Alignment(0, -0.7),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                              height: 200.0,
-                              width: 13.0,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: <Color>[
-                                    Colors.pink,
-                                    Colors.pink.shade200,
-                                    Colors.pink.shade50,
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: 30,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.pink,
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      DynamicColorBand(),
                     ],
                   ),
                 ),
-                const Expanded(
+                Expanded(
                   flex: 2,
                   child: Text(
                     "Resistor Value:",
