@@ -25,7 +25,7 @@ class ManualEntry extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
             onChanged: (manualResistance) {
-              print(manualResistance);
+              debugPrint(manualResistance);
             },
           ),
         ),
