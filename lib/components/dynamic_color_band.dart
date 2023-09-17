@@ -6,7 +6,6 @@ class DynamicColorBand extends StatelessWidget {
     super.key,
     required this.alignment,
     required this.height,
-    required this.width,
     this.selectedBand,
     this.selectedMultiplier,
     this.selectedTolerance,
@@ -15,7 +14,6 @@ class DynamicColorBand extends StatelessWidget {
 
   final Alignment alignment;
   final double height;
-  final double width;
   final BandDetails? selectedBand;
   final MultiplierDetails? selectedMultiplier;
   final ToleranceDetails? selectedTolerance;
@@ -51,6 +49,16 @@ class DynamicColorBand extends StatelessWidget {
     }
   }
 
+  double? getTagWidth() {
+    if (selectedMultiplier != null) {
+      return 70.0;
+    } else if (selectedTolerance != null || selectedPPM != null) {
+      return 50.0;
+    } else {
+      return 30.0;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -60,7 +68,7 @@ class DynamicColorBand extends StatelessWidget {
         children: [
           Container(
             height: height,
-            width: width,
+            width: 10.0,
             decoration: BoxDecoration(
               // gradient: ,
               gradient: getLocalColor() != null
@@ -68,8 +76,9 @@ class DynamicColorBand extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: <Color>[
-                        getLocalColor()!,
-                        getLocalColor()!.withAlpha(58),
+                        getLocalColor()!.withAlpha(255),
+                        getLocalColor()!.withAlpha(200),
+                        getLocalColor()!.withAlpha(190),
                       ],
                     )
                   : null,
@@ -77,8 +86,8 @@ class DynamicColorBand extends StatelessWidget {
             ),
           ),
           Container(
-            height: 30,
-            width: 50,
+            height: 25,
+            width: getTagWidth(),
             decoration: BoxDecoration(
               color: getLocalColor() ?? const Color(0xffc5c5c5),
               borderRadius: BorderRadius.circular(5.0),

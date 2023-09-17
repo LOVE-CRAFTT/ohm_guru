@@ -171,11 +171,37 @@ class _CalculationPageState extends State<CalculationPage> {
                         ),
                       ),
                       DynamicColorBand(
-                        alignment: const Alignment(0, -0.7),
+                        alignment: const Alignment(-0.55, -0.94),
                         height: 200.0,
-                        width: 13.0,
                         selectedBand: selectedBand1,
                       ),
+                      DynamicColorBand(
+                        alignment: const Alignment(-0.34, -0.94),
+                        height: 200.0,
+                        selectedBand: selectedBand2,
+                      ),
+                      if (widget.bandType == 5 || widget.bandType == 6)
+                        DynamicColorBand(
+                          alignment: const Alignment(-0.2, -0.74),
+                          height: 187.0,
+                          selectedBand: selectedBand3,
+                        ),
+                      DynamicColorBand(
+                        alignment: const Alignment(0.05, -0.74),
+                        height: 187.0,
+                        selectedMultiplier: selectedMultiplierBand,
+                      ),
+                      DynamicColorBand(
+                        alignment: const Alignment(0.34, -0.94),
+                        height: 200.0,
+                        selectedTolerance: selectedToleranceBand,
+                      ),
+                      if (widget.bandType == 6)
+                        DynamicColorBand(
+                          alignment: const Alignment(0.6, -0.94),
+                          height: 200.0,
+                          selectedPPM: selectedPPMBand,
+                        ),
                     ],
                   ),
                 ),
