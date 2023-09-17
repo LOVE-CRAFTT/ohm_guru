@@ -183,12 +183,12 @@ class _CalculationPageState extends State<CalculationPage> {
                       if (widget.bandType == 5 || widget.bandType == 6)
                         DynamicColorBand(
                           alignment: const Alignment(-0.2, -0.74),
-                          height: 187.0,
+                          height: 186.0,
                           selectedBand: selectedBand3,
                         ),
                       DynamicColorBand(
                         alignment: const Alignment(0.05, -0.74),
-                        height: 187.0,
+                        height: 186.0,
                         selectedMultiplier: selectedMultiplierBand,
                       ),
                       DynamicColorBand(
