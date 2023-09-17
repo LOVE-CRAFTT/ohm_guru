@@ -144,12 +144,12 @@ class _CalculationPageState extends State<CalculationPage> {
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                Expanded(
+                const Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(15.0),
                     child: Align(
@@ -164,19 +164,22 @@ class _CalculationPageState extends State<CalculationPage> {
                   flex: 4,
                   child: Stack(
                     children: [
-                      Align(
+                      const Align(
                         alignment: Alignment.topCenter,
                         child: Image(
                           image: AssetImage("assets/resistor.png"),
                         ),
                       ),
-
-                      //TODO: Refactor Alignment widget [dynamicColorBand] so its its own widget, properties would be alignment, dependent bandType, color and container height
-                      DynamicColorBand(),
+                      DynamicColorBand(
+                        alignment: const Alignment(0, -0.7),
+                        height: 200.0,
+                        width: 13.0,
+                        selectedBand: selectedBand1,
+                      ),
                     ],
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   flex: 2,
                   child: Text(
                     "Resistor Value:",
