@@ -144,12 +144,12 @@ class _CalculationPageState extends State<CalculationPage> {
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                Expanded(
+                const Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(15.0),
                     child: Align(
@@ -164,19 +164,48 @@ class _CalculationPageState extends State<CalculationPage> {
                   flex: 4,
                   child: Stack(
                     children: [
-                      Align(
+                      const Align(
                         alignment: Alignment.topCenter,
                         child: Image(
                           image: AssetImage("assets/resistor.png"),
                         ),
                       ),
-
-                      //TODO: Refactor Alignment widget [dynamicColorBand] so its its own widget, properties would be alignment, dependent bandType, color and container height
-                      DynamicColorBand(),
+                      DynamicColorBand(
+                        alignment: const Alignment(-0.55, -0.94),
+                        height: 200.0,
+                        selectedBand: selectedBand1,
+                      ),
+                      DynamicColorBand(
+                        alignment: const Alignment(-0.34, -0.94),
+                        height: 200.0,
+                        selectedBand: selectedBand2,
+                      ),
+                      if (widget.bandType == 5 || widget.bandType == 6)
+                        DynamicColorBand(
+                          alignment: const Alignment(-0.2, -0.74),
+                          height: 186.0,
+                          selectedBand: selectedBand3,
+                        ),
+                      DynamicColorBand(
+                        alignment: const Alignment(0.05, -0.74),
+                        height: 186.0,
+                        selectedMultiplier: selectedMultiplierBand,
+                      ),
+                      DynamicColorBand(
+                        alignment: const Alignment(0.34, -0.94),
+                        height: 200.0,
+                        selectedTolerance: selectedToleranceBand,
+                      ),
+                      if (widget.bandType == 6)
+                        DynamicColorBand(
+                          alignment: const Alignment(0.6, -0.94),
+                          height: 200.0,
+                          selectedPPM: selectedPPMBand,
+                        ),
                     ],
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   flex: 2,
                   child: Text(
                     "Resistor Value:",
