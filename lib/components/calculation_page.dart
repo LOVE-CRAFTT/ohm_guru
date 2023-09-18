@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/components/wide_view.dart';
+import 'package:ohm_guru/components/narrow_view.dart';
 
 class CalculationPage extends StatefulWidget {
   const CalculationPage({
@@ -21,7 +22,7 @@ class _CalculationPageState extends State<CalculationPage> {
     if (widget.constraints.maxWidth > 650) {
       return WideView(widget: widget);
     } else {
-      return const Placeholder();
+      return NarrowView(widget: widget);
     }
   }
 }

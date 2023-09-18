@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(
                     border: Border.all(width: 2, color: Colors.white54),
                   ),
-                  height: 800.0,
+                  height: (constraints.maxWidth > 700) ? 800 : 1400,
                   // margin: const EdgeInsets.fromLTRB(90, 40, 240, 10),
                   margin: (constraints.maxWidth > 900)
                       ? const EdgeInsets.fromLTRB(90, 40, 240, 10)
@@ -50,7 +50,6 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       const Expanded(
-                        flex: 2,
                         child: SizedBox(),
                       ),
                       TabBar(
