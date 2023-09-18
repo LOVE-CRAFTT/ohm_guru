@@ -4,14 +4,26 @@ class TitleCard extends StatelessWidget {
   const TitleCard({
     super.key,
     required this.bandCount,
+    required this.constraints,
   });
 
   final int bandCount;
+  final BoxConstraints constraints;
+
+  EdgeInsetsGeometry getMargin() {
+    if (constraints.maxWidth > 900) {
+      return const EdgeInsets.fromLTRB(90, 50, 240, 30);
+    } else {
+      return const EdgeInsets.fromLTRB(20, 50, 20, 30);
+    }
+  }
+
+  // margin: const EdgeInsets.fromLTRB(90, 50, 240, 30),
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.fromLTRB(90, 50, 240, 30),
+      margin: getMargin(),
       child: ListTile(
         leading: const Icon(
           Icons.man,

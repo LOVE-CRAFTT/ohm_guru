@@ -7,9 +7,19 @@ class ManualEntry extends StatelessWidget {
   const ManualEntry({
     super.key,
     required this.onSelectOhmUnit,
+    required this.constraints,
   });
 
   final void Function(String?)? onSelectOhmUnit;
+  final BoxConstraints constraints;
+
+  int getFlex() {
+    if (constraints.maxWidth > 600 || constraints.maxWidth < 500) {
+      return 3;
+    } else {
+      return 1;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

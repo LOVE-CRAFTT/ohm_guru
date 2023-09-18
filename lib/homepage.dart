@@ -17,73 +17,84 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: bandTypesCount,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-          title: Text(
-            widget.title,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return DefaultTabController(
+          length: bandTypesCount,
+          child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              title: Text(
+                widget.title,
+              ),
+            ),
+            body: ListView(
+              children: [
+                TitleCard(
+                  bandCount: bandCount,
+                  constraints: constraints,
+                ),
+                Divider(
+                  indent: (constraints.maxWidth > 900) ? 90.0 : 20.0,
+                  endIndent: (constraints.maxWidth > 900) ? 240.0 : 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 2, color: Colors.white54),
+                  ),
+                  height: 800.0,
+                  // margin: const EdgeInsets.fromLTRB(90, 40, 240, 10),
+                  margin: (constraints.maxWidth > 900)
+                      ? const EdgeInsets.fromLTRB(90, 40, 240, 10)
+                      : const EdgeInsets.fromLTRB(20, 40, 20, 10),
+                  child: Column(
+                    children: [
+                      const Expanded(
+                        flex: 2,
+                        child: SizedBox(),
+                      ),
+                      TabBar(
+                        tabs: bandTypes,
+                        indicatorColor: const Color(0xff0058c5),
+                        onTap: (index) {
+                          switch (index) {
+                            case 0:
+                              bandCount = 4;
+                            case 1:
+                              bandCount = 5;
+                            case 2:
+                              bandCount = 6;
+                          }
+                          setState(() {});
+                        },
+                      ),
+                      Expanded(
+                        flex: 9,
+                        child: TabBarView(
+                          children: [
+                            CalculationPage(
+                              bandType: 4,
+                              constraints: constraints,
+                            ),
+                            CalculationPage(
+                              bandType: 5,
+                              constraints: constraints,
+                            ),
+                            CalculationPage(
+                              bandType: 6,
+                              constraints: constraints,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        body: ListView(
-          children: [
-            TitleCard(
-              bandCount: bandCount,
-            ),
-            const Divider(
-              indent: 90.0,
-              endIndent: 240.0,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(width: 2, color: Colors.white54),
-              ),
-              height: 800.0,
-              margin: const EdgeInsets.fromLTRB(90, 40, 240, 10),
-              child: Column(
-                children: [
-                  const Expanded(
-                    flex: 2,
-                    child: SizedBox(),
-                  ),
-                  TabBar(
-                    tabs: bandTypes,
-                    indicatorColor: const Color(0xff0058c5),
-                    onTap: (index) {
-                      switch (index) {
-                        case 0:
-                          bandCount = 4;
-                        case 1:
-                          bandCount = 5;
-                        case 2:
-                          bandCount = 6;
-                      }
-                      setState(() {});
-                    },
-                  ),
-                  const Expanded(
-                    flex: 9,
-                    child: TabBarView(
-                      children: [
-                        CalculationPage(
-                          bandType: 4,
-                        ),
-                        CalculationPage(
-                          bandType: 5,
-                        ),
-                        CalculationPage(
-                          bandType: 6,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+        );
+      },
     );
   }
 }
