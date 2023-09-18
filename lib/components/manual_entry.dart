@@ -15,10 +15,13 @@ class ManualEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double totalWidth = constraints.maxWidth;
+    double textFieldWidth = (3 / 4) * totalWidth;
+    double ohmUnitSelectorWidth = (1 / 4) * totalWidth;
     return Row(
       children: [
-        Expanded(
-          flex: 2,
+        SizedBox(
+          width: textFieldWidth,
           child: TextField(
             controller: manualInputTextController,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -31,16 +34,12 @@ class ManualEntry extends StatelessWidget {
             },
           ),
         ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: DropdownMenu(
-              dropdownMenuEntries: buildOhmTypes,
-              enableSearch: false,
-              initialSelection: selectedOhmUnit,
-              onSelected: onSelectOhmUnit,
-            ),
-          ),
+        DropdownMenu(
+          dropdownMenuEntries: buildOhmTypes,
+          enableSearch: false,
+          initialSelection: selectedOhmUnit,
+          onSelected: onSelectOhmUnit,
+          width: ohmUnitSelectorWidth,
         ),
       ],
     );
