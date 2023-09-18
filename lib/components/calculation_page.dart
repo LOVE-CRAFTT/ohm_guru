@@ -207,9 +207,21 @@ class _CalculationPageState extends State<CalculationPage> {
                 ),
                 const Expanded(
                   flex: 2,
-                  child: Text(
-                    "Resistor Value:",
-                    style: TextStyle(fontSize: 40.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Resistor Value: ",
+                        style: TextStyle(fontSize: 40.0),
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        "22.9G Ohms .25% 25ppm",
+                        style: TextStyle(fontSize: 30.0),
+                      ),
+                    ],
                   ),
                 ),
               ],
