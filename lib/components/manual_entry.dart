@@ -13,20 +13,12 @@ class ManualEntry extends StatelessWidget {
   final void Function(String?)? onSelectOhmUnit;
   final BoxConstraints constraints;
 
-  int getFlex() {
-    if (constraints.maxWidth > 600 || constraints.maxWidth < 500) {
-      return 3;
-    } else {
-      return 1;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          flex: 3,
+          flex: 2,
           child: TextField(
             controller: manualInputTextController,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
