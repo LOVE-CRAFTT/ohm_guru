@@ -1,4 +1,3 @@
-import 'package:ohm_guru/components/calculation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/utilities/band_functions.dart';
 import 'package:ohm_guru/utilities/band_constants.dart';
@@ -6,15 +5,17 @@ import 'package:ohm_guru/utilities/dropdownmenu_functions.dart';
 import 'package:ohm_guru/utilities/text_controllers.dart';
 import 'package:ohm_guru/components/clear_button.dart';
 import 'package:ohm_guru/components/manual_entry.dart';
-import 'package:ohm_guru/components/dynamic_color_band.dart';
+import 'package:ohm_guru/components/dynamic_resistor_image.dart';
 
 class NarrowView extends StatefulWidget {
   const NarrowView({
     super.key,
-    required this.widget,
+    required this.bandType,
+    required this.constraints,
   });
 
-  final CalculationPage widget;
+  final int bandType;
+  final BoxConstraints constraints;
 
   @override
   State<NarrowView> createState() => _WideViewState();
@@ -63,8 +64,7 @@ class _WideViewState extends State<NarrowView> {
                       selectedBand: selectedBand2,
                       controller: band2TextController,
                     ),
-                    if (widget.widget.bandType == 5 ||
-                        widget.widget.bandType == 6)
+                    if (widget.bandType == 5 || widget.bandType == 6)
                       buildDropDownMenu(
                         constraints: constraints,
                         dropdownMenuEntries: buildBandColors(),
@@ -107,7 +107,7 @@ class _WideViewState extends State<NarrowView> {
                       selectedTolerance: selectedToleranceBand,
                       controller: toleranceBandTextController,
                     ),
-                    if (widget.widget.bandType == 6)
+                    if (widget.bandType == 6)
                       buildDropDownMenu(
                         constraints: constraints,
                         dropdownMenuEntries: buildPPMBandColors(),
@@ -163,52 +163,7 @@ class _WideViewState extends State<NarrowView> {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 4,
-                  child: Stack(
-                    children: [
-                      const Align(
-                        alignment: Alignment.topCenter,
-                        child: Image(
-                          image: AssetImage("assets/resistor.png"),
-                        ),
-                      ),
-                      DynamicColorBand(
-                        alignment: const Alignment(-0.55, -0.94),
-                        height: 200.0,
-                        selectedBand: selectedBand1,
-                      ),
-                      DynamicColorBand(
-                        alignment: const Alignment(-0.34, -0.94),
-                        height: 200.0,
-                        selectedBand: selectedBand2,
-                      ),
-                      if (widget.widget.bandType == 5 ||
-                          widget.widget.bandType == 6)
-                        DynamicColorBand(
-                          alignment: const Alignment(-0.2, -0.74),
-                          height: 186.0,
-                          selectedBand: selectedBand3,
-                        ),
-                      DynamicColorBand(
-                        alignment: const Alignment(0.05, -0.74),
-                        height: 186.0,
-                        selectedMultiplier: selectedMultiplierBand,
-                      ),
-                      DynamicColorBand(
-                        alignment: const Alignment(0.34, -0.94),
-                        height: 200.0,
-                        selectedTolerance: selectedToleranceBand,
-                      ),
-                      if (widget.widget.bandType == 6)
-                        DynamicColorBand(
-                          alignment: const Alignment(0.6, -0.94),
-                          height: 200.0,
-                          selectedPPM: selectedPPMBand,
-                        ),
-                    ],
-                  ),
-                ),
+                DynamicResistorImage(bandType: widget.bandType),
                 const Expanded(
                   flex: 2,
                   child: Column(

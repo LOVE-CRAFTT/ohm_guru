@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ohm_guru/components/wide_view.dart';
 import 'package:ohm_guru/components/narrow_view.dart';
 
-class CalculationPage extends StatefulWidget {
+class CalculationPage extends StatelessWidget {
   const CalculationPage({
     super.key,
     required this.bandType,
@@ -13,16 +13,17 @@ class CalculationPage extends StatefulWidget {
   final BoxConstraints constraints;
 
   @override
-  State<CalculationPage> createState() => _CalculationPageState();
-}
-
-class _CalculationPageState extends State<CalculationPage> {
-  @override
   Widget build(BuildContext context) {
-    if (widget.constraints.maxWidth > 650) {
-      return WideView(widget: widget);
+    if (constraints.maxWidth > 650) {
+      return WideView(
+        bandType: bandType,
+        constraints: constraints,
+      );
     } else {
-      return NarrowView(widget: widget);
+      return NarrowView(
+        bandType: bandType,
+        constraints: constraints,
+      );
     }
   }
 }
