@@ -6,6 +6,7 @@ import 'package:ohm_guru/utilities/text_controllers.dart';
 import 'package:ohm_guru/components/clear_button.dart';
 import 'package:ohm_guru/components/manual_entry.dart';
 import 'package:ohm_guru/components/dynamic_resistor_image.dart';
+import 'package:ohm_guru/components/resistor_value_display.dart';
 
 class WideView extends StatefulWidget {
   const WideView({
@@ -164,29 +165,7 @@ class _WideViewState extends State<WideView> {
                   ),
                 ),
                 DynamicResistorImage(bandType: widget.bandType),
-                const Expanded(
-                  flex: 2,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "Resistor Value: ",
-                          style: TextStyle(fontSize: 40.0),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Expanded(
-                        child: Text(
-                          "22.9G Ohms .25% 25ppm",
-                          style: TextStyle(fontSize: 30.0),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const ResistorValueDisplay(),
               ],
             ),
           ),
