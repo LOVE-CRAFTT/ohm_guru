@@ -16,8 +16,8 @@ class ManualEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double totalWidth = constraints.maxWidth;
-    double textFieldWidth = (3 / 4) * totalWidth;
-    double ohmUnitSelectorWidth = (1 / 4) * totalWidth;
+    double textFieldWidth = (2 / 3) * totalWidth;
+    double ohmUnitSelectorWidth = (1 / 3) * totalWidth;
     return Row(
       children: [
         SizedBox(
