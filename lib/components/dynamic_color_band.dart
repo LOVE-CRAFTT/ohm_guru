@@ -50,9 +50,9 @@ class DynamicColorBand extends StatelessWidget {
   }
 
   double? getTagWidth() {
-    if (selectedMultiplier != null) {
-      return 70.0;
-    } else if (selectedTolerance != null || selectedPPM != null) {
+    if (selectedMultiplier != null || selectedPPM != null) {
+      return 60.0;
+    } else if (selectedTolerance != null) {
       return 50.0;
     } else {
       return 30.0;
