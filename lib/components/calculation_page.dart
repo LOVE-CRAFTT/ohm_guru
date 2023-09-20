@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/components/wide_view.dart';
 import 'package:ohm_guru/components/narrow_view.dart';
+import 'package:ohm_guru/logic/resistor_logic.dart';
 
 class CalculationPage extends StatelessWidget {
   const CalculationPage({
@@ -14,15 +15,15 @@ class CalculationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    currentBandType = bandType;
+
     if (constraints.maxWidth > 650) {
       return WideView(
         bandType: bandType,
-        constraints: constraints,
       );
     } else {
       return NarrowView(
         bandType: bandType,
-        constraints: constraints,
       );
     }
   }

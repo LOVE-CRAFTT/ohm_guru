@@ -12,11 +12,9 @@ class WideView extends StatefulWidget {
   const WideView({
     super.key,
     required this.bandType,
-    required this.constraints,
   });
 
   final int bandType;
-  final BoxConstraints constraints;
 
   @override
   State<WideView> createState() => _WideViewState();

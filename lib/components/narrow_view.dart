@@ -12,11 +12,9 @@ class NarrowView extends StatefulWidget {
   const NarrowView({
     super.key,
     required this.bandType,
-    required this.constraints,
   });
 
   final int bandType;
-  final BoxConstraints constraints;
 
   @override
   State<NarrowView> createState() => _WideViewState();
