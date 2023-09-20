@@ -1,7 +1,7 @@
 import 'package:ohm_guru/utilities/band_constants.dart';
 
-num? currentBandType;
 String? resistance;
+num? currentBandType;
 num? weightedBand1Value;
 num? weightedBand2Value;
 num? weightedBand3Value;
