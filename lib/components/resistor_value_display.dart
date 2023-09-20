@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ohm_guru/logic/resistor_logic.dart';
 
 class ResistorValueDisplay extends StatelessWidget {
   const ResistorValueDisplay({
@@ -8,28 +7,26 @@ class ResistorValueDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getResistance();
-    return Expanded(
+    return const Expanded(
       flex: 2,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Expanded(
+          Expanded(
             child: Text(
               "Resistor Value: ",
               style: TextStyle(fontSize: 40.0),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10.0,
           ),
-          if (resistance != null)
-            Expanded(
-              child: Text(
-                "$resistance",
-                style: const TextStyle(fontSize: 30.0),
-              ),
+          Expanded(
+            child: Text(
+              "22.9G Ohms .25% 25ppm",
+              style: TextStyle(fontSize: 30.0),
             ),
+          ),
         ],
       ),
     );
