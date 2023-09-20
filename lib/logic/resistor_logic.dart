@@ -7,6 +7,11 @@ num? weightedBand2Value;
 num? weightedBand3Value;
 num? totalIntermediateResistance;
 
+void setAndGetResistance() {
+  setResistance();
+  getResistance();
+}
+
 void setResistance() {
   if (currentBandType == 4) {
     weightedBand1Value =
