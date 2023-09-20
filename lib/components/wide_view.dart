@@ -7,6 +7,7 @@ import 'package:ohm_guru/components/clear_button.dart';
 import 'package:ohm_guru/components/manual_entry.dart';
 import 'package:ohm_guru/components/dynamic_resistor_image.dart';
 import 'package:ohm_guru/components/resistor_value_display.dart';
+import 'package:ohm_guru/logic/resistor_logic.dart';
 
 class WideView extends StatefulWidget {
   const WideView({
@@ -43,6 +44,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedBand1 = band as BandDetails?;
+                            setResistance();
                           },
                         );
                       },
@@ -57,6 +59,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedBand2 = band as BandDetails?;
+                            setResistance();
                           },
                         );
                       },
@@ -72,6 +75,7 @@ class _WideViewState extends State<WideView> {
                           setState(
                             () {
                               selectedBand3 = band as BandDetails?;
+                              setResistance();
                             },
                           );
                         },
@@ -86,6 +90,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedMultiplierBand = band as MultiplierDetails?;
+                            setResistance();
                           },
                         );
                       },
@@ -100,6 +105,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedToleranceBand = band as ToleranceDetails?;
+                            setResistance();
                           },
                         );
                       },
@@ -115,6 +121,7 @@ class _WideViewState extends State<WideView> {
                           setState(
                             () {
                               selectedPPMBand = band as PPMDetails?;
+                              setResistance();
                             },
                           );
                         },
@@ -126,6 +133,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedOhmUnit = unit;
+                            setResistance();
                           },
                         );
                       },
@@ -136,6 +144,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             clearSelection();
+                            setResistance();
                           },
                         );
                       },

@@ -23,12 +23,13 @@ class ResistorValueDisplay extends StatelessWidget {
           const SizedBox(
             height: 10.0,
           ),
-          Expanded(
-            child: Text(
-              "$resistance",
-              style: const TextStyle(fontSize: 30.0),
+          if (resistance != null)
+            Expanded(
+              child: Text(
+                "$resistance",
+                style: const TextStyle(fontSize: 30.0),
+              ),
             ),
-          ),
         ],
       ),
     );

@@ -2,18 +2,38 @@ import 'package:ohm_guru/utilities/band_constants.dart';
 
 num? currentBandType;
 String? resistance;
+num? weightedBand1Value;
+num? weightedBand2Value;
+num? weightedBand3Value;
+num? totalIntermediateResistance;
 
-void calculateResistance() {
-  print(currentBandType);
-  print(selectedBand1);
-  print(selectedBand2);
-  print(selectedBand3);
-  print(selectedMultiplierBand);
-  print(selectedToleranceBand);
-  print(selectedPPMBand);
+void setResistance() {
+  if (currentBandType == 4) {
+    weightedBand1Value =
+        selectedBand1 == null ? null : selectedBand1!.value * 10;
+    weightedBand2Value = selectedBand2 == null ? null : selectedBand2!.value;
+    weightedBand3Value = selectedBand3 == null ? null : 0;
+  } else {
+    weightedBand1Value =
+        selectedBand1 == null ? null : selectedBand1!.value * 100;
+    weightedBand2Value =
+        selectedBand2 == null ? null : selectedBand2!.value * 10;
+    weightedBand3Value = selectedBand3 == null ? null : selectedBand3!.value;
+  }
 }
 
 void getResistance() {
-  print("In get Resistance");
-  resistance = "22.9G Ohms .25% 25ppm";
+  if (currentBandType == 4) {
+    if (weightedBand1Value != null && weightedBand2Value != null) {
+      totalIntermediateResistance = weightedBand1Value! + weightedBand2Value!;
+    }
+  } else {
+    if (weightedBand1Value != null &&
+        weightedBand2Value != null &&
+        weightedBand3Value != null) {
+      totalIntermediateResistance =
+          weightedBand1Value! + weightedBand2Value! + weightedBand3Value!;
+    }
+  }
+  resistance = totalIntermediateResistance?.toString();
 }
