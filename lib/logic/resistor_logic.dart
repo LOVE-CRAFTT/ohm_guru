@@ -7,9 +7,9 @@ num? weightedBand2Value;
 num? weightedBand3Value;
 num? totalIntermediateResistance;
 
-void setAndGetResistance() {
+String? setAndGetResistance() {
   setResistance();
-  getResistance();
+  return getResistance();
 }
 
 void setResistance() {
@@ -27,7 +27,8 @@ void setResistance() {
   }
 }
 
-void getResistance() {
+String? getResistance() {
+  totalIntermediateResistance = null;
   if (currentBandType == 4) {
     if (weightedBand1Value != null && weightedBand2Value != null) {
       totalIntermediateResistance = weightedBand1Value! + weightedBand2Value!;
@@ -40,5 +41,5 @@ void getResistance() {
           weightedBand1Value! + weightedBand2Value! + weightedBand3Value!;
     }
   }
-  resistance = totalIntermediateResistance?.toString();
+  return totalIntermediateResistance?.toString();
 }

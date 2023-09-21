@@ -7,6 +7,7 @@ import 'package:ohm_guru/components/clear_button.dart';
 import 'package:ohm_guru/components/manual_entry.dart';
 import 'package:ohm_guru/components/dynamic_resistor_image.dart';
 import 'package:ohm_guru/components/resistor_value_display.dart';
+import 'package:ohm_guru/logic/resistor_logic.dart';
 
 class WideView extends StatefulWidget {
   const WideView({
@@ -21,6 +22,16 @@ class WideView extends StatefulWidget {
 }
 
 class _WideViewState extends State<WideView> {
+  @override
+  void initState() {
+    super.initState();
+    setState(
+      () {
+        resistance = setAndGetResistance();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -43,6 +54,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedBand1 = band as BandDetails?;
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -57,6 +69,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedBand2 = band as BandDetails?;
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -72,6 +85,7 @@ class _WideViewState extends State<WideView> {
                           setState(
                             () {
                               selectedBand3 = band as BandDetails?;
+                              resistance = setAndGetResistance();
                             },
                           );
                         },
@@ -136,6 +150,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             clearSelection();
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -163,7 +178,9 @@ class _WideViewState extends State<WideView> {
                   ),
                 ),
                 DynamicResistorImage(bandType: widget.bandType),
-                const ResistorValueDisplay(),
+                ResistorValueDisplay(
+                  displayResistanceString: resistance,
+                ),
               ],
             ),
           ),

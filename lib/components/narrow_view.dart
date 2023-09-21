@@ -7,6 +7,7 @@ import 'package:ohm_guru/components/clear_button.dart';
 import 'package:ohm_guru/components/manual_entry.dart';
 import 'package:ohm_guru/components/dynamic_resistor_image.dart';
 import 'package:ohm_guru/components/resistor_value_display.dart';
+import 'package:ohm_guru/logic/resistor_logic.dart';
 
 class NarrowView extends StatefulWidget {
   const NarrowView({
@@ -17,10 +18,17 @@ class NarrowView extends StatefulWidget {
   final int bandType;
 
   @override
-  State<NarrowView> createState() => _WideViewState();
+  State<NarrowView> createState() => _NarrowViewState();
 }
 
-class _WideViewState extends State<NarrowView> {
+class _NarrowViewState extends State<NarrowView> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    resistance = setAndGetResistance();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,6 +51,7 @@ class _WideViewState extends State<NarrowView> {
                         setState(
                           () {
                             selectedBand1 = band as BandDetails?;
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -57,6 +66,7 @@ class _WideViewState extends State<NarrowView> {
                         setState(
                           () {
                             selectedBand2 = band as BandDetails?;
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -72,6 +82,7 @@ class _WideViewState extends State<NarrowView> {
                           setState(
                             () {
                               selectedBand3 = band as BandDetails?;
+                              resistance = setAndGetResistance();
                             },
                           );
                         },
@@ -136,6 +147,7 @@ class _WideViewState extends State<NarrowView> {
                         setState(
                           () {
                             clearSelection();
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -163,7 +175,9 @@ class _WideViewState extends State<NarrowView> {
                   ),
                 ),
                 DynamicResistorImage(bandType: widget.bandType),
-                const ResistorValueDisplay(),
+                ResistorValueDisplay(
+                  displayResistanceString: resistance,
+                ),
               ],
             ),
           ),
