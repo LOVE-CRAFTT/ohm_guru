@@ -35,6 +35,12 @@ DropdownMenu buildDropDownMenu({
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: getLocalColor(),
+      labelStyle: TextStyle(
+        color:
+            getLocalColor() == Colors.white || getLocalColor() == Colors.yellow
+                ? Colors.black
+                : Colors.white,
+      ),
     ),
     onSelected: onSelected,
     enableSearch: false,
