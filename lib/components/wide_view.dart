@@ -100,6 +100,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedMultiplierBand = band as MultiplierDetails?;
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -114,6 +115,7 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedToleranceBand = band as ToleranceDetails?;
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -129,6 +131,7 @@ class _WideViewState extends State<WideView> {
                           setState(
                             () {
                               selectedPPMBand = band as PPMDetails?;
+                              resistance = setAndGetResistance();
                             },
                           );
                         },

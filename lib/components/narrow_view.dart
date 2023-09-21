@@ -97,6 +97,7 @@ class _NarrowViewState extends State<NarrowView> {
                         setState(
                           () {
                             selectedMultiplierBand = band as MultiplierDetails?;
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -111,6 +112,7 @@ class _NarrowViewState extends State<NarrowView> {
                         setState(
                           () {
                             selectedToleranceBand = band as ToleranceDetails?;
+                            resistance = setAndGetResistance();
                           },
                         );
                       },
@@ -126,6 +128,7 @@ class _NarrowViewState extends State<NarrowView> {
                           setState(
                             () {
                               selectedPPMBand = band as PPMDetails?;
+                              resistance = setAndGetResistance();
                             },
                           );
                         },
