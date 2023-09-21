@@ -24,7 +24,6 @@ class NarrowView extends StatefulWidget {
 class _NarrowViewState extends State<NarrowView> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     resistance = setAndGetResistance();
   }
