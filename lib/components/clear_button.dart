@@ -13,7 +13,6 @@ class ClearButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        debugPrint("Pressed the button");
         clearFunction();
       },
       style: clearButtonTextStyle(),
