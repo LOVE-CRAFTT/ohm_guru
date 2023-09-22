@@ -84,21 +84,33 @@ String? getResistance() {
 
 String convertToDisplayString(num calculatedResistance,
     [String? currentToleranceString = "", String? currentPPMString = ""]) {
-  String stringWorker1 = calculatedResistance.toString();
+  num truncatedResistance = calculatedResistance.truncate();
+  String stringWorker1 = truncatedResistance.toString();
   num countWorker = stringWorker1.length;
+
   if (countWorker >= 4 && countWorker <= 6) {
     calculatedResistance /= 1000;
-    String stringWorker2 = calculatedResistance.toString();
-    return "$stringWorker2 kΩ ${currentToleranceString!} ${currentPPMString!}";
+    stringWorker1 = calculatedResistance.toString();
+    return "$stringWorker1 kΩ ${currentToleranceString!} ${currentPPMString!}";
   } else if (countWorker >= 7 && countWorker <= 9) {
     calculatedResistance /= 1000000;
-    String stringWorker2 = calculatedResistance.toString();
-    return "$stringWorker2 MΩ ${currentToleranceString!} ${currentPPMString!}";
+    stringWorker1 = calculatedResistance.toString();
+    return "$stringWorker1 MΩ ${currentToleranceString!} ${currentPPMString!}";
   } else if (countWorker >= 10 && countWorker <= 12) {
     calculatedResistance /= 1000000000;
-    String stringWorker2 = calculatedResistance.toString();
-    return "$stringWorker2 GΩ ${currentToleranceString!} ${currentPPMString!}";
+    stringWorker1 = calculatedResistance.toString();
+    return "$stringWorker1 GΩ ${currentToleranceString!} ${currentPPMString!}";
   } else {
-    return "$stringWorker1 Ω ${currentToleranceString!} ${currentPPMString!}";
+    return "${printValueIfDecimal(testResistance: calculatedResistance)} Ω ${currentToleranceString!} ${currentPPMString!}";
+  }
+}
+
+String printValueIfDecimal({required num testResistance}) {
+  if (testResistance % 1 == 0) {
+    return testResistance.toString();
+  } else {
+    return testResistance * 100 % 10 == 0
+        ? testResistance.toStringAsFixed(1)
+        : testResistance.toStringAsFixed(2);
   }
 }
