@@ -17,3 +17,5 @@ class CustomTextInputFormatter extends TextInputFormatter {
     }
   }
 }
+
+CustomTextInputFormatter ensureDigitAndOneDot = CustomTextInputFormatter();

@@ -24,9 +24,7 @@ class ManualEntry extends StatelessWidget {
           width: textFieldWidth,
           child: TextField(
             controller: manualInputTextController,
-            inputFormatters: [
-              CustomTextInputFormatter(),
-            ],
+            inputFormatters: [ensureDigitAndOneDot],
             decoration: const InputDecoration(
               hintText: "Enter value then choose the unit",
               border: OutlineInputBorder(),
