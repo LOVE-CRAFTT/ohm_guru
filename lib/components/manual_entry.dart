@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:ohm_guru/utilities/band_constants.dart';
 import 'package:ohm_guru/utilities/text_controllers.dart';
+import 'package:ohm_guru/utilities/custom_text_input_formatter.dart';
 
 class ManualEntry extends StatelessWidget {
   const ManualEntry({
@@ -24,7 +24,9 @@ class ManualEntry extends StatelessWidget {
           width: textFieldWidth,
           child: TextField(
             controller: manualInputTextController,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            inputFormatters: [
+              CustomTextInputFormatter(),
+            ],
             decoration: const InputDecoration(
               hintText: "Enter value then choose the unit",
               border: OutlineInputBorder(),
