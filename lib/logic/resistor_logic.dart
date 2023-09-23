@@ -118,11 +118,21 @@ String printValueIfDecimal({required num testResistance}) {
 void manualInputLogic(String entry) {
   bool isDecimal = entry.contains('.');
   num? userEntry = entry.isNotEmpty ? num.parse(entry) : null;
-  print(userEntry);
-  print(isDecimal);
+  // print(userEntry);
+  // print(isDecimal);
   if (currentBandType == 4) {
     //calculate and set selectedband1, selectedband2, selectedband3? and selectedMultiplierBand
+    // selectedBand3 = null;
   } else {
     //calculate and set selectedband1, selectedband2, selectedband3 and selectedMultiplierBand
   }
 }
+
+//The user can input a whole number or a decimal, the lowest two multipliers are 0.1 and 0.01.
+//if the currentBandType is 4 then if its a decimal get get the appropriate multiplier
+//set selected band 1 to the first digit in the entry, set selected band 2 to the second digit in the entry after accounting for multiplier and selected band 3 to null
+//if the currentBandType is not 4 then if its a decimal get get the appropriate multiplier
+//set selected band 1 to the first digit in the entry, set selected band 2 to the second digit in the entry, and set selected band 3 to the second digit in the entry after accounting for multiplier and selected band 3 to null
+//The user can set the resistance symbol to ohm, k ohm, M ohm and G ohm. it is set in a global variable called currentOhmUnit.
+//Account for that too.
+//Other multipliers are 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 and 1000000000
