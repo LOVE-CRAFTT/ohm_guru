@@ -185,8 +185,8 @@ class _WideViewState extends State<WideView> {
                   ),
                 ),
                 DynamicResistorImage(
-                  ///Redundancy to ensure this is rebuilt on setState
-                  bandType: currentBandType,
+                  ///To ensure this is always rebuilt on setState
+                  key: ValueKey(DateTime.now()),
                 ),
                 ResistorValueDisplay(
                   displayResistanceString: resistance,
