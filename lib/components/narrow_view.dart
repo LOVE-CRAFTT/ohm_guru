@@ -180,7 +180,10 @@ class _NarrowViewState extends State<NarrowView> {
                     ),
                   ),
                 ),
-                const DynamicResistorImage(),
+                DynamicResistorImage(
+                  ///Redundancy to ensure this is rebuilt on setState
+                  bandType: currentBandType,
+                ),
                 ResistorValueDisplay(
                   displayResistanceString: resistance,
                 ),

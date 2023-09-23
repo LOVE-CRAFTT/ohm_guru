@@ -6,8 +6,10 @@ import 'package:ohm_guru/components/dynamic_color_band.dart';
 class DynamicResistorImage extends StatelessWidget {
   const DynamicResistorImage({
     super.key,
+    required this.bandType,
   });
 
+  final num? bandType;
   @override
   Widget build(BuildContext context) {
     return Expanded(
