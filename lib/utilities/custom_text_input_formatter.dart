@@ -40,4 +40,4 @@ class CustomTextInputFormatter extends TextInputFormatter {
   }
 }
 
-CustomTextInputFormatter ensureDigitAndOneDot = CustomTextInputFormatter();
+CustomTextInputFormatter ensureDigitsAndOneDot = CustomTextInputFormatter();
