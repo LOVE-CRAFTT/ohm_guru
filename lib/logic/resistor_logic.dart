@@ -109,7 +109,7 @@ String printValueIfDecimal({required num testResistance}) {
   if (testResistance % 1 == 0) {
     return testResistance.toString();
   } else {
-    return testResistance * 100 % 10 == 0
+    return testResistance * 100 % 10 <= 0.00001
         ? testResistance.toStringAsFixed(1)
         : testResistance.toStringAsFixed(2);
   }
