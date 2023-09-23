@@ -21,9 +21,6 @@ class ResistorValueDisplay extends StatelessWidget {
               style: TextStyle(fontSize: 40.0),
             ),
           ),
-          const SizedBox(
-            height: 10.0,
-          ),
           if (displayResistanceString != null)
             Expanded(
               child: Text(
