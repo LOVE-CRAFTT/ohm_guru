@@ -147,7 +147,7 @@ class _WideViewState extends State<WideView> {
                       onTextChange: (manualResistance) {
                         setState(
                           () {
-                            debugPrint(manualResistance);
+                            manualInputLogic(manualResistance);
                           },
                         );
                       },

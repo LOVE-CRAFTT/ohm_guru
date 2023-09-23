@@ -115,7 +115,14 @@ String printValueIfDecimal({required num testResistance}) {
   }
 }
 
-void manualInputLogic() {
+void manualInputLogic(String entry) {
+  bool isDecimal = entry.contains('.');
+  num? userEntry = entry.isNotEmpty ? num.parse(entry) : null;
+  print(userEntry);
+  print(isDecimal);
   if (currentBandType == 4) {
-  } else {}
+    //calculate and set selectedband1, selectedband2, selectedband3? and selectedMultiplierBand
+  } else {
+    //calculate and set selectedband1, selectedband2, selectedband3 and selectedMultiplierBand
+  }
 }
