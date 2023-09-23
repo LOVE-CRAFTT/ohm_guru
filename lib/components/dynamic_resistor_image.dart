@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ohm_guru/logic/resistor_logic.dart';
 import 'package:ohm_guru/utilities/band_constants.dart';
 import 'package:ohm_guru/components/dynamic_color_band.dart';
 
 class DynamicResistorImage extends StatelessWidget {
   const DynamicResistorImage({
     super.key,
-    required this.bandType,
   });
-
-  final int bandType;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class DynamicResistorImage extends StatelessWidget {
             height: 160.0,
             selectedBand: selectedBand2,
           ),
-          if (bandType == 5 || bandType == 6)
+          if (currentBandType == 5 || currentBandType == 6)
             DynamicColorBand(
               alignment: const Alignment(-0.2, -0.84),
               height: 149.0,
@@ -48,7 +46,7 @@ class DynamicResistorImage extends StatelessWidget {
             height: 160.0,
             selectedTolerance: selectedToleranceBand,
           ),
-          if (bandType == 6)
+          if (currentBandType == 6)
             DynamicColorBand(
               alignment: const Alignment(0.6, -0.94),
               height: 160.0,

@@ -18,13 +18,9 @@ class CalculationPage extends StatelessWidget {
     currentBandType = bandType;
 
     if (constraints.maxWidth > 650) {
-      return WideView(
-        bandType: bandType,
-      );
+      return const WideView();
     } else {
-      return NarrowView(
-        bandType: bandType,
-      );
+      return const NarrowView();
     }
   }
 }

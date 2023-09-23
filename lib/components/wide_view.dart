@@ -12,10 +12,7 @@ import 'package:ohm_guru/logic/resistor_logic.dart';
 class WideView extends StatefulWidget {
   const WideView({
     super.key,
-    required this.bandType,
   });
-
-  final int bandType;
 
   @override
   State<WideView> createState() => _WideViewState();
@@ -76,7 +73,7 @@ class _WideViewState extends State<WideView> {
                       selectedBand: selectedBand2,
                       controller: band2TextController,
                     ),
-                    if (widget.bandType == 5 || widget.bandType == 6)
+                    if (currentBandType == 5 || currentBandType == 6)
                       buildDropDownMenu(
                         constraints: constraints,
                         dropdownMenuEntries: buildBandColors(),
@@ -122,7 +119,7 @@ class _WideViewState extends State<WideView> {
                       selectedTolerance: selectedToleranceBand,
                       controller: toleranceBandTextController,
                     ),
-                    if (widget.bandType == 6)
+                    if (currentBandType == 6)
                       buildDropDownMenu(
                         constraints: constraints,
                         dropdownMenuEntries: buildPPMBandColors(),
@@ -147,6 +144,13 @@ class _WideViewState extends State<WideView> {
                         );
                       },
                       constraints: constraints,
+                      onTextChange: (manualResistance) {
+                        setState(
+                          () {
+                            debugPrint(manualResistance);
+                          },
+                        );
+                      },
                     ),
                     ClearButton(
                       clearFunction: () {
@@ -180,7 +184,7 @@ class _WideViewState extends State<WideView> {
                     ),
                   ),
                 ),
-                DynamicResistorImage(bandType: widget.bandType),
+                const DynamicResistorImage(),
                 ResistorValueDisplay(
                   displayResistanceString: resistance,
                 ),

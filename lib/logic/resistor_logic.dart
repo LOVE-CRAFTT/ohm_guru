@@ -114,3 +114,8 @@ String printValueIfDecimal({required num testResistance}) {
         : testResistance.toStringAsFixed(2);
   }
 }
+
+void manualInputLogic() {
+  if (currentBandType == 4) {
+  } else {}
+}

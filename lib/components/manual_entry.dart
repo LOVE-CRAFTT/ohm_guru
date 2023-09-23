@@ -7,10 +7,12 @@ class ManualEntry extends StatelessWidget {
   const ManualEntry({
     super.key,
     required this.onSelectOhmUnit,
+    required this.onTextChange,
     required this.constraints,
   });
 
   final void Function(String?)? onSelectOhmUnit;
+  final void Function(String)? onTextChange;
   final BoxConstraints constraints;
 
   @override
@@ -29,9 +31,7 @@ class ManualEntry extends StatelessWidget {
               hintText: "Enter value then choose the unit",
               border: OutlineInputBorder(),
             ),
-            onChanged: (manualResistance) {
-              debugPrint(manualResistance);
-            },
+            onChanged: onTextChange,
           ),
         ),
         DropdownMenu(
