@@ -7,13 +7,32 @@ class CustomTextInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
+    const maxResistorValue4 = 99000000000;
+    const maxResistorValue5And6 = 999000000000;
     final hasOnlyOneDot = newValue.text.split('.').length <= 2;
     final hasOnlyDigitsAndDot =
         newValue.text.replaceAll(RegExp(r'[0-9.]'), '').isEmpty;
-    final hasExactDigitsBeforeDecimal =
-        newValue.text.split('.')[0].length <= (currentBandType == 4 ? 2 : 3);
 
-    if (hasOnlyOneDot && hasOnlyDigitsAndDot && hasExactDigitsBeforeDecimal) {
+    final beforeDecimal = newValue.text.split('.')[0];
+    final isLessOrEqualToMax = beforeDecimal.isEmpty ||
+        (int.tryParse(beforeDecimal) != null &&
+            int.parse(beforeDecimal) <=
+                (currentBandType == 4
+                    ? maxResistorValue4
+                    : maxResistorValue5And6));
+
+    final significantDigits = currentBandType == 4 ? 2 : 3;
+    final hasOnlyZerosAfterSignificantDigits =
+        beforeDecimal.length <= significantDigits ||
+            beforeDecimal
+                .substring(significantDigits)
+                .split('')
+                .every((digit) => digit == '0');
+
+    if (hasOnlyOneDot &&
+        hasOnlyDigitsAndDot &&
+        isLessOrEqualToMax &&
+        hasOnlyZerosAfterSignificantDigits) {
       return newValue;
     } else {
       return oldValue;
