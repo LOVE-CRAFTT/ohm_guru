@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 int bandTypesCount = bandTypes.length;
 String globalManualResistance = "";
+const maxResistorValue4 = 99000000000;
+const maxResistorValue5And6 = 999000000000;
 
 List<Text> bandTypes = const [
   Text("4 Band"),

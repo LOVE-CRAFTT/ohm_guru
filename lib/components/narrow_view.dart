@@ -133,19 +133,15 @@ class _NarrowViewState extends State<NarrowView> {
                       ),
                     ManualEntry(
                       onSelectOhmUnit: (unit) {
-                        setState(
-                          () {
-                            selectedOhmUnit = unit;
-                          },
-                        );
+                        selectedOhmUnit = unit;
+                        manualInputLogic(globalManualResistance);
+                        setState(() {});
                       },
                       constraints: constraints,
-                      onTextChange: (manualResistance) {
-                        setState(
-                          () {
-                            debugPrint(manualResistance);
-                          },
-                        );
+                      onTextChange: (localManualResistance) {
+                        globalManualResistance = localManualResistance;
+                        manualInputLogic(globalManualResistance);
+                        setState(() {});
                       },
                     ),
                     ClearButton(

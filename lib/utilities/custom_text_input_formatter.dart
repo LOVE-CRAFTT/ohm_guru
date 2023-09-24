@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:ohm_guru/logic/resistor_logic.dart';
+import 'package:ohm_guru/utilities/band_constants.dart';
 
 class CustomTextInputFormatter extends TextInputFormatter {
   @override
@@ -7,8 +8,6 @@ class CustomTextInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    const maxResistorValue4 = 99000000000;
-    const maxResistorValue5And6 = 999000000000;
     final hasOnlyOneDot = newValue.text.split('.').length <= 2;
     final hasOnlyDigitsAndDot =
         newValue.text.replaceAll(RegExp(r'[0-9.]'), '').isEmpty;
