@@ -154,7 +154,43 @@ void manualInputLogic(String entry) {
         ? null
         : MultiplierDetails.values
             .firstWhere((multiplier) => multiplier.value == multiplierNum);
-  } else {}
+  } else {
+    if (userEntryList.length >= 3) {
+      num1 = int.parse(userEntryList[0]);
+      num2 = int.parse(userEntryList[1]);
+      num3 = int.parse(userEntryList[2]);
+    } else {
+      num1 = userEntryList.isEmpty ? null : 0;
+      num2 = userEntryList.isEmpty
+          ? null
+          : (userEntryList.length == 2 ? int.parse(userEntryList[0]) : 0);
+      num3 = userEntryList.isEmpty
+          ? null
+          : (userEntryList.length == 2
+              ? int.parse(userEntryList[1])
+              : int.parse(userEntryList[0]));
+    }
+    multiplierNum = userEntryNum != null
+        ? multipliers.lastWhere((multiple) => userEntryNum % multiple == 0)
+        : null;
+    if (userEntryNum != null && userEntryNum > maxResistorValue5And6) {
+      num1 = num2 = num3 = multiplierNum = null;
+    }
+
+    selectedBand1 = num1 == null
+        ? null
+        : BandDetails.values.firstWhere((band) => band.value == num1);
+    selectedBand2 = num2 == null
+        ? null
+        : BandDetails.values.firstWhere((band) => band.value == num2);
+    selectedBand3 = num3 == null
+        ? null
+        : BandDetails.values.firstWhere((band) => band.value == num3);
+    selectedMultiplierBand = multiplierNum == null
+        ? null
+        : MultiplierDetails.values
+            .firstWhere((multiplier) => multiplier.value == multiplierNum);
+  }
 }
 
 List<num> multipliers = [
