@@ -1,4 +1,5 @@
 import 'package:ohm_guru/utilities/band_constants.dart';
+import 'package:ohm_guru/utilities/text_controllers.dart';
 
 String? resistance;
 num? currentBandType;
@@ -143,14 +144,14 @@ void manualInputLogic(String entry) {
       num1 = num2 = num3 = multiplierNum = null;
     }
 
-    selectedBand1 = num1 == null
+    selectedBand1 = (num1 == null)
         ? null
         : BandDetails.values.firstWhere((band) => band.value == num1);
-    selectedBand2 = num2 == null
+    selectedBand2 = (num2 == null)
         ? null
         : BandDetails.values.firstWhere((band) => band.value == num2);
     selectedBand3 = null;
-    selectedMultiplierBand = multiplierNum == null
+    selectedMultiplierBand = (multiplierNum == null)
         ? null
         : MultiplierDetails.values
             .firstWhere((multiplier) => multiplier.value == multiplierNum);
@@ -177,19 +178,31 @@ void manualInputLogic(String entry) {
       num1 = num2 = num3 = multiplierNum = null;
     }
 
-    selectedBand1 = num1 == null
+    selectedBand1 = (num1 == null)
         ? null
         : BandDetails.values.firstWhere((band) => band.value == num1);
-    selectedBand2 = num2 == null
+    selectedBand2 = (num2 == null)
         ? null
         : BandDetails.values.firstWhere((band) => band.value == num2);
-    selectedBand3 = num3 == null
+    selectedBand3 = (num3 == null)
         ? null
         : BandDetails.values.firstWhere((band) => band.value == num3);
-    selectedMultiplierBand = multiplierNum == null
+    selectedMultiplierBand = (multiplierNum == null)
         ? null
         : MultiplierDetails.values
             .firstWhere((multiplier) => multiplier.value == multiplierNum);
+  }
+  if (selectedBand1 != null) {
+    band1TextController.text = selectedBand1!.label;
+  }
+  if (selectedBand2 != null) {
+    band2TextController.text = selectedBand2!.label;
+  }
+  if (selectedBand3 != null) {
+    band3TextController.text = selectedBand3!.label;
+  }
+  if (selectedMultiplierBand != null) {
+    multiplierBandTextController.text = selectedMultiplierBand!.label;
   }
 }
 
