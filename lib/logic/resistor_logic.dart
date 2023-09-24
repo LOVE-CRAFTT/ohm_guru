@@ -120,10 +120,10 @@ void manualInputLogic(String entry) {
   num? userEntryNum =
       entry.isNotEmpty ? num.parse(entry) * ohmMap[selectedOhmUnit]! : null;
   List<String> userEntryList = entry.split('');
-  int? num1;
-  int? num2;
-  int? num3;
-  int? multiplierNum;
+  num? num1;
+  num? num2;
+  num? num3;
+  num? multiplierNum;
 
   if (currentBandType == 4) {
     if (userEntryList.length >= 2) {
@@ -139,6 +139,10 @@ void manualInputLogic(String entry) {
         ? multipliers.lastWhere((multiple) => userEntryNum % multiple == 0)
         : null;
 
+    if (userEntryNum != null && userEntryNum > maxResistorValue4) {
+      num1 = num2 = num3 = multiplierNum = null;
+    }
+
     selectedBand1 = num1 == null
         ? null
         : BandDetails.values.firstWhere((band) => band.value == num1);
@@ -153,7 +157,9 @@ void manualInputLogic(String entry) {
   } else {}
 }
 
-List<int> multipliers = [
+List<num> multipliers = [
+  0.01,
+  0.1,
   1,
   10,
   100,
