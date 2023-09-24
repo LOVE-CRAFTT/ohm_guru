@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 int bandTypesCount = bandTypes.length;
+String globalManualResistance = "";
 
 List<Text> bandTypes = const [
   Text("4 Band"),

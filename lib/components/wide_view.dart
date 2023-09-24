@@ -137,19 +137,15 @@ class _WideViewState extends State<WideView> {
                       ),
                     ManualEntry(
                       onSelectOhmUnit: (unit) {
-                        setState(
-                          () {
-                            selectedOhmUnit = unit;
-                          },
-                        );
+                        selectedOhmUnit = unit;
+                        manualInputLogic(globalManualResistance);
+                        setState(() {});
                       },
                       constraints: constraints,
-                      onTextChange: (manualResistance) {
-                        setState(
-                          () {
-                            manualInputLogic(manualResistance);
-                          },
-                        );
+                      onTextChange: (localManualResistance) {
+                        globalManualResistance = localManualResistance;
+                        manualInputLogic(globalManualResistance);
+                        setState(() {});
                       },
                     ),
                     ClearButton(
