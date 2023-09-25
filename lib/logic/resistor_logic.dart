@@ -125,6 +125,7 @@ void manualInputLogic(String entry) {
   num? num2;
   num? num3;
   num? multiplierNum;
+
   //=====
   void clearRelevantText() {
     band1TextController.clear();
