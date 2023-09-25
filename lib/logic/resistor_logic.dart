@@ -118,8 +118,9 @@ String printValueIfDecimal({required num testResistance}) {
 
 void manualInputLogic(String entry) {
   bool isNotDecimal = !entry.contains('.');
-  num? userEntryNum =
-      entry.isNotEmpty ? num.parse(entry) * ohmMap[selectedOhmUnit]! : null;
+  num? userEntryNum = entry.isNotEmpty
+      ? (entry == "." ? 0.0 : num.parse(entry)) * ohmMap[selectedOhmUnit]!
+      : null;
   List<String> userEntryList = entry.split('');
   num? num1;
   num? num2;
