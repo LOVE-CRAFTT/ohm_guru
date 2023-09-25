@@ -125,6 +125,60 @@ void manualInputLogic(String entry) {
   num? num2;
   num? num3;
   num? multiplierNum;
+  //=====
+  void clearRelevantText() {
+    band1TextController.clear();
+    band2TextController.clear();
+    band3TextController.clear();
+    multiplierBandTextController.clear();
+  }
+
+  //=====
+  void setNumToNullIfOverValue() {
+    if (userEntryNum != null &&
+        userEntryNum >
+            (currentBandType == 4
+                ? maxResistorValue4
+                : maxResistorValue5And6)) {
+      num1 = num2 = num3 = multiplierNum = null;
+    }
+  }
+
+  //=====
+  void clearTextIfOverValueOrEmptyEntry() {
+    if (entry.isEmpty ||
+        userEntryNum != null &&
+            userEntryNum >
+                (currentBandType == 4
+                    ? maxResistorValue4
+                    : maxResistorValue5And6)) {
+      clearRelevantText();
+    }
+  }
+
+  //=====
+  void setSelectedBands() {
+    selectedBand1 = (num1 == null)
+        ? null
+        : BandDetails.values.firstWhere((band) => band.value == num1);
+    selectedBand2 = (num2 == null)
+        ? null
+        : BandDetails.values.firstWhere((band) => band.value == num2);
+    selectedBand3 = (num3 == null)
+        ? null
+        : BandDetails.values.firstWhere((band) => band.value == num3);
+    selectedMultiplierBand = (multiplierNum == null)
+        ? null
+        : MultiplierDetails.values
+            .firstWhere((multiplier) => multiplier.value == multiplierNum);
+  }
+
+  //=====
+  void setMultiplierNum() {
+    multiplierNum = userEntryNum != null
+        ? multipliers.lastWhere((multiple) => userEntryNum % multiple == 0)
+        : null;
+  }
 
   if (currentBandType == 4) {
     if (userEntryList.length >= 2) {
@@ -136,25 +190,10 @@ void manualInputLogic(String entry) {
       num2 = userEntryList.isEmpty ? null : int.parse(userEntryList[0]);
       num3 = null;
     }
-    multiplierNum = userEntryNum != null
-        ? multipliers.lastWhere((multiple) => userEntryNum % multiple == 0)
-        : null;
+    setMultiplierNum();
 
-    if (userEntryNum != null && userEntryNum > maxResistorValue4) {
-      num1 = num2 = num3 = multiplierNum = null;
-    }
-
-    selectedBand1 = (num1 == null)
-        ? null
-        : BandDetails.values.firstWhere((band) => band.value == num1);
-    selectedBand2 = (num2 == null)
-        ? null
-        : BandDetails.values.firstWhere((band) => band.value == num2);
-    selectedBand3 = null;
-    selectedMultiplierBand = (multiplierNum == null)
-        ? null
-        : MultiplierDetails.values
-            .firstWhere((multiplier) => multiplier.value == multiplierNum);
+    setNumToNullIfOverValue();
+    setSelectedBands();
   } else {
     if (userEntryList.length >= 3) {
       num1 = int.parse(userEntryList[0]);
@@ -171,27 +210,12 @@ void manualInputLogic(String entry) {
               ? int.parse(userEntryList[1])
               : int.parse(userEntryList[0]));
     }
-    multiplierNum = userEntryNum != null
-        ? multipliers.lastWhere((multiple) => userEntryNum % multiple == 0)
-        : null;
-    if (userEntryNum != null && userEntryNum > maxResistorValue5And6) {
-      num1 = num2 = num3 = multiplierNum = null;
-    }
+    setMultiplierNum();
 
-    selectedBand1 = (num1 == null)
-        ? null
-        : BandDetails.values.firstWhere((band) => band.value == num1);
-    selectedBand2 = (num2 == null)
-        ? null
-        : BandDetails.values.firstWhere((band) => band.value == num2);
-    selectedBand3 = (num3 == null)
-        ? null
-        : BandDetails.values.firstWhere((band) => band.value == num3);
-    selectedMultiplierBand = (multiplierNum == null)
-        ? null
-        : MultiplierDetails.values
-            .firstWhere((multiplier) => multiplier.value == multiplierNum);
+    setNumToNullIfOverValue();
+    setSelectedBands();
   }
+
   if (selectedBand1 != null) {
     band1TextController.text = selectedBand1!.label;
   }
@@ -204,6 +228,7 @@ void manualInputLogic(String entry) {
   if (selectedMultiplierBand != null) {
     multiplierBandTextController.text = selectedMultiplierBand!.label;
   }
+  clearTextIfOverValueOrEmptyEntry();
 }
 
 List<num> multipliers = [
