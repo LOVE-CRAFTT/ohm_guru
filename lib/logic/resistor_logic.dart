@@ -117,7 +117,7 @@ String printValueIfDecimal({required num testResistance}) {
 }
 
 void manualInputLogic(String entry) {
-  bool isDecimal = entry.contains('.');
+  bool isNotDecimal = !entry.contains('.');
   num? userEntryNum =
       entry.isNotEmpty ? num.parse(entry) * ohmMap[selectedOhmUnit]! : null;
   List<String> userEntryList = entry.split('');
@@ -172,6 +172,19 @@ void manualInputLogic(String entry) {
         ? null
         : MultiplierDetails.values
             .firstWhere((multiplier) => multiplier.value == multiplierNum);
+
+    if (selectedBand1 != null) {
+      band1TextController.text = selectedBand1!.label;
+    }
+    if (selectedBand2 != null) {
+      band2TextController.text = selectedBand2!.label;
+    }
+    if (selectedBand3 != null) {
+      band3TextController.text = selectedBand3!.label;
+    }
+    if (selectedMultiplierBand != null) {
+      multiplierBandTextController.text = selectedMultiplierBand!.label;
+    }
   }
 
   //=====
@@ -181,54 +194,42 @@ void manualInputLogic(String entry) {
         : null;
   }
 
-  if (currentBandType == 4) {
-    if (userEntryList.length >= 2) {
-      num1 = int.parse(userEntryList[0]);
-      num2 = int.parse(userEntryList[1]);
-      num3 = null;
+  if (isNotDecimal) {
+    if (currentBandType == 4) {
+      if (userEntryList.length >= 2) {
+        num1 = int.parse(userEntryList[0]);
+        num2 = int.parse(userEntryList[1]);
+        num3 = null;
+      } else {
+        num1 = userEntryList.isEmpty ? null : 0;
+        num2 = userEntryList.isEmpty ? null : int.parse(userEntryList[0]);
+        num3 = null;
+      }
+      setMultiplierNum();
+      setNumToNullIfOverValue();
+      setSelectedBands();
     } else {
-      num1 = userEntryList.isEmpty ? null : 0;
-      num2 = userEntryList.isEmpty ? null : int.parse(userEntryList[0]);
-      num3 = null;
+      if (userEntryList.length >= 3) {
+        num1 = int.parse(userEntryList[0]);
+        num2 = int.parse(userEntryList[1]);
+        num3 = int.parse(userEntryList[2]);
+      } else {
+        num1 = userEntryList.isEmpty ? null : 0;
+        num2 = userEntryList.isEmpty
+            ? null
+            : (userEntryList.length == 2 ? int.parse(userEntryList[0]) : 0);
+        num3 = userEntryList.isEmpty
+            ? null
+            : (userEntryList.length == 2
+                ? int.parse(userEntryList[1])
+                : int.parse(userEntryList[0]));
+      }
+      setMultiplierNum();
+      setNumToNullIfOverValue();
+      setSelectedBands();
     }
-    setMultiplierNum();
+  } else {}
 
-    setNumToNullIfOverValue();
-    setSelectedBands();
-  } else {
-    if (userEntryList.length >= 3) {
-      num1 = int.parse(userEntryList[0]);
-      num2 = int.parse(userEntryList[1]);
-      num3 = int.parse(userEntryList[2]);
-    } else {
-      num1 = userEntryList.isEmpty ? null : 0;
-      num2 = userEntryList.isEmpty
-          ? null
-          : (userEntryList.length == 2 ? int.parse(userEntryList[0]) : 0);
-      num3 = userEntryList.isEmpty
-          ? null
-          : (userEntryList.length == 2
-              ? int.parse(userEntryList[1])
-              : int.parse(userEntryList[0]));
-    }
-    setMultiplierNum();
-
-    setNumToNullIfOverValue();
-    setSelectedBands();
-  }
-
-  if (selectedBand1 != null) {
-    band1TextController.text = selectedBand1!.label;
-  }
-  if (selectedBand2 != null) {
-    band2TextController.text = selectedBand2!.label;
-  }
-  if (selectedBand3 != null) {
-    band3TextController.text = selectedBand3!.label;
-  }
-  if (selectedMultiplierBand != null) {
-    multiplierBandTextController.text = selectedMultiplierBand!.label;
-  }
   clearTextIfOverValueOrEmptyEntry();
 }
 
