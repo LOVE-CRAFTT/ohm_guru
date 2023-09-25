@@ -124,22 +124,37 @@ num? multiplierNum;
 num? userEntryNum;
 late bool isNotDecimal;
 late List<String> userEntryList;
+late List<String> decimalSplit;
 
 void manualInputLogic(String entry) {
   isNotDecimal = !entry.contains('.');
-  userEntryNum = entry.isNotEmpty
-      ? (entry == "." ? 0.0 : num.parse(entry)) * ohmMap[selectedOhmUnit]!
+  userEntryNum = entry.isNotEmpty && entry != "."
+      ? num.parse(entry) * ohmMap[selectedOhmUnit]!
       : null;
   userEntryList = entry.split('');
+  decimalSplit = entry.split('.');
 
   if (isNotDecimal) {
     nonDecimalCalculation();
-  } else {}
+  } else {
+    decimalCalculation();
+  }
 
   clearTextIfOverValueOrEmptyEntry();
 }
 
+void decimalCalculation() {
+  if (decimalSplit[0].length >= (currentBandType == 4 ? 2 : 3)) {
+    userEntryNum = decimalSplit[0].isNotEmpty
+        ? num.parse(decimalSplit[0]) * ohmMap[selectedOhmUnit]!
+        : null;
+    userEntryList = decimalSplit[0].split('');
+    nonDecimalCalculation();
+  }
+}
+
 void nonDecimalCalculation() {
+  removeLeadingZeros();
   if (currentBandType == 4) {
     if (userEntryList.length >= 2) {
       num1 = int.parse(userEntryList[0]);
@@ -175,8 +190,18 @@ void nonDecimalCalculation() {
   }
 }
 
+void removeLeadingZeros() {
+  for (var entry in userEntryList) {
+    if (entry == '0') {
+      userEntryList.removeAt(0);
+    } else {
+      break;
+    }
+  }
+}
+
 void setMultiplierNum() {
-  multiplierNum = userEntryNum != null
+  multiplierNum = userEntryList.isNotEmpty
       ? multipliers.lastWhere((multiple) => userEntryNum! % multiple == 0)
       : null;
 }
@@ -189,7 +214,8 @@ void clearRelevantText() {
 }
 
 void setNumToNullIfOverValue() {
-  if (userEntryNum != null &&
+  if (userEntryList.isNotEmpty &&
+      userEntryNum != null &&
       userEntryNum! >
           (currentBandType == 4 ? maxResistorValue4 : maxResistorValue5And6)) {
     num1 = num2 = num3 = multiplierNum = null;
