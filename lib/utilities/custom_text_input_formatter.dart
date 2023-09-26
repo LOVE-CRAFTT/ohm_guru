@@ -9,6 +9,9 @@ class CustomTextInputFormatter extends TextInputFormatter {
     TextEditingValue newValue,
   ) {
     final hasOnlyOneDot = newValue.text.split('.').length <= 2;
+    if (!hasOnlyOneDot) {
+      return oldValue;
+    }
     final hasOnlyDigitsAndDot =
         newValue.text.replaceAll(RegExp(r'[0-9.]'), '').isEmpty;
 
@@ -20,18 +23,26 @@ class CustomTextInputFormatter extends TextInputFormatter {
                     ? maxResistorValue4
                     : maxResistorValue5And6));
 
-    final significantDigits = currentBandType == 4 ? 2 : 3;
-    final hasOnlyZerosAfterSignificantDigits =
-        beforeDecimal.length <= significantDigits ||
-            beforeDecimal
-                .substring(significantDigits)
-                .split('')
-                .every((digit) => digit == '0');
+    final beforeDecimalList = beforeDecimal.split('');
+    var nonZeroIndex =
+        beforeDecimalList.indexWhere((element) => element != '0');
 
-    if (hasOnlyOneDot &&
-        hasOnlyDigitsAndDot &&
+    if (nonZeroIndex == -1) {
+      return newValue;
+    }
+
+    final indexToCheckForZerosFrom =
+        nonZeroIndex + (currentBandType == 4 ? 2 : 3);
+
+    final hasOnlyZerosAfterSignificantDigit =
+        indexToCheckForZerosFrom >= beforeDecimalList.length ||
+            beforeDecimalList
+                .sublist(indexToCheckForZerosFrom)
+                .every((element) => element == '0');
+
+    if (hasOnlyDigitsAndDot &&
         isLessOrEqualToMax &&
-        hasOnlyZerosAfterSignificantDigits) {
+        hasOnlyZerosAfterSignificantDigit) {
       return newValue;
     } else {
       return oldValue;
