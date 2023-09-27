@@ -122,25 +122,23 @@ num? num2;
 num? num3;
 num? multiplierNum;
 num? userEntryNum;
-num? userEntryRaw;
-late bool isNotDecimal;
+late bool isDecimal;
 late List<String> userEntryList;
 late List<String> decimalSplit;
 
 void manualInputLogic(String entry) {
   entry = removeLeadingZeros(entry);
-  userEntryRaw = entry.isNotEmpty && entry != "." ? num.parse(entry) : null;
   userEntryNum = entry.isNotEmpty && entry != "."
       ? num.parse(entry) * ohmMap[selectedOhmUnit]!
       : null;
-  isNotDecimal = !entry.contains('.');
+  isDecimal = entry.contains('.');
   userEntryList = entry.split('');
   decimalSplit = entry.split('.');
 
-  if (isNotDecimal) {
-    nonDecimalCalculation();
-  } else {
+  if (isDecimal) {
     decimalCalculation();
+  } else {
+    nonDecimalCalculation();
   }
 
   clearTextIfOverValueOrEmptyEntry();
@@ -151,8 +149,6 @@ void decimalCalculation() {
     userEntryNum = decimalSplit[0].isNotEmpty
         ? num.parse(decimalSplit[0]) * ohmMap[selectedOhmUnit]!
         : null;
-    userEntryRaw =
-        decimalSplit[0].isNotEmpty ? num.parse(decimalSplit[0]) : null;
     userEntryList = decimalSplit[0].split('');
     nonDecimalCalculation();
   }
