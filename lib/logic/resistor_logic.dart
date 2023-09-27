@@ -122,15 +122,18 @@ num? num2;
 num? num3;
 num? multiplierNum;
 num? userEntryNum;
+num? userEntryRaw;
 late bool isNotDecimal;
 late List<String> userEntryList;
 late List<String> decimalSplit;
 
 void manualInputLogic(String entry) {
-  isNotDecimal = !entry.contains('.');
+  entry = removeLeadingZeros(entry);
+  userEntryRaw = entry.isNotEmpty && entry != "." ? num.parse(entry) : null;
   userEntryNum = entry.isNotEmpty && entry != "."
       ? num.parse(entry) * ohmMap[selectedOhmUnit]!
       : null;
+  isNotDecimal = !entry.contains('.');
   userEntryList = entry.split('');
   decimalSplit = entry.split('.');
 
@@ -148,13 +151,14 @@ void decimalCalculation() {
     userEntryNum = decimalSplit[0].isNotEmpty
         ? num.parse(decimalSplit[0]) * ohmMap[selectedOhmUnit]!
         : null;
+    userEntryRaw =
+        decimalSplit[0].isNotEmpty ? num.parse(decimalSplit[0]) : null;
     userEntryList = decimalSplit[0].split('');
     nonDecimalCalculation();
   }
 }
 
 void nonDecimalCalculation() {
-  removeLeadingZeros();
   if (currentBandType == 4) {
     if (userEntryList.length >= 2) {
       num1 = int.parse(userEntryList[0]);
@@ -165,9 +169,6 @@ void nonDecimalCalculation() {
       num2 = userEntryList.isEmpty ? null : int.parse(userEntryList[0]);
       num3 = null;
     }
-    setMultiplierNum();
-    setNumToNullIfOverValue();
-    setSelectedBands();
   } else {
     if (userEntryList.length >= 3) {
       num1 = int.parse(userEntryList[0]);
@@ -184,25 +185,50 @@ void nonDecimalCalculation() {
               ? int.parse(userEntryList[1])
               : int.parse(userEntryList[0]));
     }
-    setMultiplierNum();
-    setNumToNullIfOverValue();
-    setSelectedBands();
   }
+  setMultiplierNum();
+  setNumToNullIfOverValue();
+  setSelectedBands();
 }
 
-void removeLeadingZeros() {
-  for (var entry in userEntryList) {
+String removeLeadingZeros(String userEntry) {
+  var workerList = userEntry.split('');
+  String workerString = "";
+  for (var entry in workerList) {
     if (entry == '0') {
-      userEntryList.removeAt(0);
+      workerList = workerList.sublist(1);
     } else {
       break;
     }
   }
+  for (var entry in workerList) {
+    workerString += entry;
+  }
+  return workerString;
 }
 
 void setMultiplierNum() {
-  multiplierNum = userEntryList.isNotEmpty
-      ? multipliers.lastWhere((multiple) => userEntryNum! % multiple == 0)
+  num workerNum1;
+  num workerNum2;
+  num workerNum3;
+  num total;
+  if (currentBandType == 4) {
+    workerNum1 = num1 == null ? 0 : num1! * 10;
+    workerNum2 = num2 == null ? 0 : num2!;
+    workerNum3 = 0;
+  } else {
+    workerNum1 = num1 == null ? 0 : num1! * 100;
+    workerNum2 = num2 == null ? 0 : num2! * 10;
+    workerNum3 = num3 ?? 0;
+  }
+  total = workerNum1 + workerNum2 + workerNum3;
+
+  multiplierNum = (userEntryNum != null &&
+          userEntryNum! <=
+              (currentBandType == 4
+                  ? maxResistorValue4
+                  : maxResistorValue5And6))
+      ? multipliers.firstWhere((multiple) => total * multiple == userEntryNum)
       : null;
 }
 
@@ -214,8 +240,7 @@ void clearRelevantText() {
 }
 
 void setNumToNullIfOverValue() {
-  if (userEntryList.isNotEmpty &&
-      userEntryNum != null &&
+  if (userEntryNum != null &&
       userEntryNum! >
           (currentBandType == 4 ? maxResistorValue4 : maxResistorValue5And6)) {
     num1 = num2 = num3 = multiplierNum = null;
