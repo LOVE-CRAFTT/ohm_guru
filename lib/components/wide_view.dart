@@ -163,7 +163,6 @@ class _WideViewState extends State<WideView> {
                           },
                         );
                       },
-                      purchaseFunction: () {},
                     ),
                   ],
                 );

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/utilities/style_constants.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri resistorPurchasePage =
+    Uri.parse('https://robo.com.cy/products/resistor-kit-560-pcs-1-4w');
 
 class ActionButtons extends StatelessWidget {
   const ActionButtons({
     super.key,
     required this.clearFunction,
-    required this.purchaseFunction,
   });
 
   final VoidCallback clearFunction;
-  final VoidCallback purchaseFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +31,7 @@ class ActionButtons extends StatelessWidget {
         ),
         Expanded(
           child: TextButton(
-            onPressed: () {
-              purchaseFunction();
-            },
+            onPressed: () {},
             style: purchaseButtonTextStyle(),
             child: const Text("Purchase"),
           ),
