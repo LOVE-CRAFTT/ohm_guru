@@ -24,7 +24,7 @@ class DynamicResistorImage extends StatelessWidget {
           children: [
             const Positioned(
               child: Image(
-                image: AssetImage("resistor.png"),
+                image: AssetImage("assets/resistor.png"),
               ),
             ),
             DynamicColorBand(

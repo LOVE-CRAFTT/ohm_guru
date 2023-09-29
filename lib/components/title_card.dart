@@ -24,7 +24,7 @@ class TitleCard extends StatelessWidget {
       margin: getMargin(),
       child: ListTile(
         leading: const Image(
-          image: AssetImage("icon.png"),
+          image: AssetImage("assets/icon.png"),
         ),
         title: Text("$bandCount Band Resistor Code Calculator"),
         contentPadding:
