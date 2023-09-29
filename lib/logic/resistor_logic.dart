@@ -125,6 +125,8 @@ num? userEntryNum;
 late bool isDecimal;
 late List<String> userEntryList;
 late List<String> decimalSplit;
+late List<String> beforeDecimal;
+late List<String> afterDecimal;
 
 void manualInputLogic(String entry) {
   entry = removeLeadingZeros(entry);
@@ -134,6 +136,8 @@ void manualInputLogic(String entry) {
   isDecimal = entry.contains('.');
   userEntryList = entry.split('');
   decimalSplit = entry.split('.');
+  beforeDecimal = decimalSplit.first.split('');
+  afterDecimal = decimalSplit.last.split('');
 
   if (isDecimal) {
     decimalCalculation();
@@ -145,12 +149,35 @@ void manualInputLogic(String entry) {
 }
 
 void decimalCalculation() {
-  if (decimalSplit[0].length >= (currentBandType == 4 ? 2 : 3)) {
-    userEntryNum = decimalSplit[0].isNotEmpty
-        ? num.parse(decimalSplit[0]) * ohmMap[selectedOhmUnit]!
-        : null;
-    userEntryList = decimalSplit[0].split('');
+  ///This means the user entered a single dot
+  if (userEntryNum == null) {
+    userEntryNum = null;
+    userEntryList = [];
     nonDecimalCalculation();
+  } else {
+    int remaining;
+    int count = 0;
+
+    remaining = (currentBandType == 4 ? 2 : 3) -
+        (beforeDecimal.isEmpty ? 1 : beforeDecimal.length);
+    if (remaining.isNegative) remaining = 0;
+    if (afterDecimal.length > 2) {
+      afterDecimal = afterDecimal.sublist(0, 2);
+    }
+    if (remaining > 0) {
+      while (beforeDecimal.length <= remaining && afterDecimal.isNotEmpty) {
+        beforeDecimal.add(afterDecimal.first);
+        afterDecimal.removeAt(0);
+        count++;
+      }
+      userEntryNum = getNewUserEntryNum(count);
+      userEntryList = beforeDecimal;
+      nonDecimalCalculation();
+    } else {
+      userEntryNum = getNewUserEntryNum(0);
+      userEntryList = beforeDecimal;
+      nonDecimalCalculation();
+    }
   }
 }
 
@@ -203,6 +230,18 @@ String removeLeadingZeros(String userEntry) {
   return workerString;
 }
 
+num getNewUserEntryNum(int endIndex) {
+  var positionOfDot = userEntryList.indexOf('.');
+  var cutOffIndex = positionOfDot + endIndex;
+  var workerList = userEntryList.sublist(0, cutOffIndex + 1);
+  var workerString = "";
+  for (var entry in workerList) {
+    workerString += entry;
+  }
+  var workerNum = num.parse(workerString);
+  return workerNum * ohmMap[selectedOhmUnit]!;
+}
+
 void setMultiplierNum() {
   num workerNum1;
   num workerNum2;
@@ -224,7 +263,8 @@ void setMultiplierNum() {
               (currentBandType == 4
                   ? maxResistorValue4
                   : maxResistorValue5And6))
-      ? multipliers.firstWhere((multiple) => total * multiple == userEntryNum)
+      ? multipliers.firstWhere(
+          (multiple) => (total * multiple - userEntryNum!).abs() < 1e-10)
       : null;
 }
 
@@ -295,7 +335,7 @@ List<num> multipliers = [
   1000000,
   10000000,
   100000000,
-  1000000000
+  1000000000,
 ];
 
 Map<String?, num> ohmMap = {
