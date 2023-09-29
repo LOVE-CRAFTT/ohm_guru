@@ -3,7 +3,7 @@ import 'package:ohm_guru/utilities/band_functions.dart';
 import 'package:ohm_guru/utilities/band_constants.dart';
 import 'package:ohm_guru/utilities/dropdownmenu_functions.dart';
 import 'package:ohm_guru/utilities/text_controllers.dart';
-import 'package:ohm_guru/components/clear_button.dart';
+import 'package:ohm_guru/components/action_buttons.dart';
 import 'package:ohm_guru/components/manual_entry.dart';
 import 'package:ohm_guru/components/dynamic_resistor_image.dart';
 import 'package:ohm_guru/components/resistor_value_display.dart';
@@ -154,7 +154,7 @@ class _WideViewState extends State<WideView> {
                         );
                       },
                     ),
-                    ClearButton(
+                    ActionButtons(
                       clearFunction: () {
                         setState(
                           () {
@@ -163,6 +163,8 @@ class _WideViewState extends State<WideView> {
                           },
                         );
                       },
+                      purchaseFunction: () {},
+                      constraints: constraints,
                     ),
                   ],
                 );

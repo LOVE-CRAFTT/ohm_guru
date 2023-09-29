@@ -10,7 +10,15 @@ ButtonStyle? clearButtonTextStyle() {
   return TextButton.styleFrom(
     backgroundColor: const Color(0xff0058c5),
     foregroundColor: Colors.white,
-    minimumSize: const Size(200.0, 50.0),
+    minimumSize: const Size(150.0, 50.0),
+  );
+}
+
+ButtonStyle? purchaseButtonTextStyle() {
+  return TextButton.styleFrom(
+    backgroundColor: const Color(0xffc50058),
+    foregroundColor: Colors.white,
+    minimumSize: const Size(150.0, 50.0),
   );
 }
 
