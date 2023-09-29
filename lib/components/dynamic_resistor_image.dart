@@ -19,7 +19,6 @@ class DynamicResistorImage extends StatelessWidget {
             : constraints.maxWidth / 10);
         double bandHeight1 = 160.0;
         double bandHeight2 = 147.0;
-        print(constraints.maxWidth);
 
         return Stack(
           children: [
