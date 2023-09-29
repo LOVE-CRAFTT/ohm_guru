@@ -18,16 +18,13 @@ class TitleCard extends StatelessWidget {
     }
   }
 
-  // margin: const EdgeInsets.fromLTRB(90, 50, 240, 30),
-
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: getMargin(),
       child: ListTile(
-        leading: const Icon(
-          Icons.man,
-          size: 50.0,
+        leading: const Image(
+          image: AssetImage("icon.png"),
         ),
         title: Text("$bandCount Band Resistor Code Calculator"),
         contentPadding:
