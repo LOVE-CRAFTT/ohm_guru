@@ -149,7 +149,6 @@ void manualInputLogic(String entry) {
 }
 
 void decimalCalculation() {
-  ///This means the user entered a single dot
   if (userEntryNum == null) {
     userEntryNum = null;
     userEntryList = [];
@@ -171,10 +170,12 @@ void decimalCalculation() {
         count++;
       }
       userEntryNum = getNewUserEntryNum(count);
+      removeLeadingZerosList(beforeDecimal);
       userEntryList = beforeDecimal;
       nonDecimalCalculation();
     } else {
       userEntryNum = getNewUserEntryNum(0);
+      removeLeadingZerosList(beforeDecimal);
       userEntryList = beforeDecimal;
       nonDecimalCalculation();
     }
@@ -228,6 +229,17 @@ String removeLeadingZeros(String userEntry) {
     workerString += entry;
   }
   return workerString;
+}
+
+List<String> removeLeadingZerosList(List<String> userEntry) {
+  for (var entry in userEntry) {
+    if (entry == '0') {
+      userEntry = userEntry.sublist(1);
+    } else {
+      break;
+    }
+  }
+  return userEntry;
 }
 
 num getNewUserEntryNum(int endIndex) {
