@@ -31,12 +31,18 @@ class ActionButtons extends StatelessWidget {
         ),
         Expanded(
           child: TextButton(
-            onPressed: () {},
+            onPressed: launchPurchasePage,
             style: purchaseButtonTextStyle(),
             child: const Text("Purchase"),
           ),
         ),
       ],
     );
+  }
+}
+
+Future<void> launchPurchasePage() async {
+  if (!await launchUrl(resistorPurchasePage)) {
+    throw Exception('Could not launch page');
   }
 }
