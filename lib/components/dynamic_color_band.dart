@@ -4,15 +4,17 @@ import 'package:ohm_guru/utilities/band_constants.dart';
 class DynamicColorBand extends StatelessWidget {
   const DynamicColorBand({
     super.key,
-    required this.alignment,
+    required this.leftOffset,
     required this.height,
     this.selectedBand,
     this.selectedMultiplier,
     this.selectedTolerance,
     this.selectedPPM,
+    required this.topOffset,
   });
 
-  final Alignment alignment;
+  final double leftOffset;
+  final double topOffset;
   final double height;
   final BandDetails? selectedBand;
   final MultiplierDetails? selectedMultiplier;
@@ -61,8 +63,9 @@ class DynamicColorBand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: alignment,
+    return Positioned(
+      top: topOffset,
+      left: leftOffset,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

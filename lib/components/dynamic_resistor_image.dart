@@ -12,48 +12,63 @@ class DynamicResistorImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 4,
-      child: Stack(
-        children: [
-          const Align(
-            alignment: Alignment.topCenter,
-            child: Image(
-              image: AssetImage("resistor.png"),
+      child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        double bandWidth = (constraints.maxWidth < 458
+            ? constraints.maxWidth / 8
+            : constraints.maxWidth / 10);
+        double bandHeight1 = 160.0;
+        double bandHeight2 = 147.0;
+        print(constraints.maxWidth);
+
+        return Stack(
+          children: [
+            const Positioned(
+              child: Image(
+                image: AssetImage("resistor.png"),
+              ),
             ),
-          ),
-          DynamicColorBand(
-            alignment: const Alignment(-0.55, -0.94),
-            height: 160.0,
-            selectedBand: selectedBand1,
-          ),
-          DynamicColorBand(
-            alignment: const Alignment(-0.34, -0.94),
-            height: 160.0,
-            selectedBand: selectedBand2,
-          ),
-          if (currentBandType == 5 || currentBandType == 6)
             DynamicColorBand(
-              alignment: const Alignment(-0.2, -0.84),
-              height: 149.0,
-              selectedBand: selectedBand3,
+              topOffset: 3,
+              leftOffset: bandWidth * 1,
+              height: bandHeight1,
+              selectedBand: selectedBand1,
             ),
-          DynamicColorBand(
-            alignment: const Alignment(0.05, -0.84),
-            height: 149.0,
-            selectedMultiplier: selectedMultiplierBand,
-          ),
-          DynamicColorBand(
-            alignment: const Alignment(0.34, -0.94),
-            height: 160.0,
-            selectedTolerance: selectedToleranceBand,
-          ),
-          if (currentBandType == 6)
             DynamicColorBand(
-              alignment: const Alignment(0.6, -0.94),
-              height: 160.0,
-              selectedPPM: selectedPPMBand,
+              topOffset: 3,
+              leftOffset: bandWidth * 2,
+              height: bandHeight1,
+              selectedBand: selectedBand2,
             ),
-        ],
-      ),
+            if (currentBandType == 5 || currentBandType == 6)
+              DynamicColorBand(
+                topOffset: (constraints.maxWidth > 293 ? 15 : 10),
+                leftOffset: bandWidth * 3,
+                height: bandHeight2,
+                selectedBand: selectedBand3,
+              ),
+            DynamicColorBand(
+              topOffset: (constraints.maxWidth > 293 ? 15 : 10),
+              leftOffset: bandWidth * 3.7,
+              height: bandHeight2,
+              selectedMultiplier: selectedMultiplierBand,
+            ),
+            DynamicColorBand(
+              topOffset: 3,
+              leftOffset: bandWidth * 5,
+              height: bandHeight1,
+              selectedTolerance: selectedToleranceBand,
+            ),
+            if (currentBandType == 6)
+              DynamicColorBand(
+                topOffset: 3,
+                leftOffset: bandWidth * 6,
+                height: bandHeight1,
+                selectedPPM: selectedPPMBand,
+              ),
+          ],
+        );
+      }),
     );
   }
 }
