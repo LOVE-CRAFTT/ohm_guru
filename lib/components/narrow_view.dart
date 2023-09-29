@@ -160,7 +160,6 @@ class _NarrowViewState extends State<NarrowView> {
                         );
                       },
                       purchaseFunction: () {},
-                      constraints: constraints,
                     ),
                   ],
                 );

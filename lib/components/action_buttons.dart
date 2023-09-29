@@ -6,12 +6,10 @@ class ActionButtons extends StatelessWidget {
     super.key,
     required this.clearFunction,
     required this.purchaseFunction,
-    required this.constraints,
   });
 
   final VoidCallback clearFunction;
   final VoidCallback purchaseFunction;
-  final BoxConstraints constraints;
 
   @override
   Widget build(BuildContext context) {
