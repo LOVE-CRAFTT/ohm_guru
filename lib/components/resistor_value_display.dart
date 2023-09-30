@@ -23,7 +23,8 @@ class ResistorValueDisplay extends StatelessWidget {
             ),
           ),
 
-          ///The text is only displayed if the resistance is not null, and the resistance can be not null only when all the available bands have been given values
+          ///The text is only displayed if the resistance is not null,
+          /// and the resistance can be not null only when all the available bands have been given values
           if (displayResistanceString != null)
             Expanded(
               child: Text(

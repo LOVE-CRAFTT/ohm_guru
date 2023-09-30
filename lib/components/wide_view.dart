@@ -36,7 +36,7 @@ class _WideViewState extends State<WideView> {
   Widget build(BuildContext context) {
     ///Once a band is selected, the corresponding selected band is set
     ///and the resistance variable is set with the [setAndGetResistance] function
-    ///This method allows the user to select values arbitrarily and the value is shown only after required bands are set
+    ///This method allows the user to select bands arbitrarily and the value is shown only after required bands are set
     return Row(
       children: [
         Expanded(

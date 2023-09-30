@@ -179,7 +179,7 @@ void decimalCalculation() {
     int count = 0;
 
     ///The remaining number of digits to get to the maximum number of significant digits is determined
-    ///Then if the remaining digits are more than 0, digits after the decimal are moved "forward" to fill the space
+    ///If the remaining digits are more than 0, digits after the decimal are moved "forward" to fill the space
     ///Digits after the decimal are limited to 2 because our set of multipliers bottoms out at 0.01
     ///The newUserEntryNum is set with the new values before the decimal
     ///The user entry list becomes the list of values before the decimal with the leading zeros removed
