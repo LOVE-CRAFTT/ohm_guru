@@ -189,7 +189,7 @@ void decimalCalculation() {
     /// Example: user enters 0.243 in 4 band and ohmUnit set to kΩ
     /// entry is "cleaned" to .243 at the remove leading zeros section
     /// user entry is not equals null so we're in this section
-    /// remaining = 1
+    /// remaining = 2
     /// 2 and 4 are moved to before decimal position (remaining > 0 && afterDecimal.isNotEmpty)
     /// userEntryNum is set to 0.24 * 1000 = 240
     /// userEntryList is set to [2, 4]
