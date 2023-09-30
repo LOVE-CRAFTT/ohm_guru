@@ -195,8 +195,7 @@ void decimalCalculation() {
     /// userEntryList is set to [2, 4]
     /// non decimal calculation is run with those values
     /// multiplier num is set to 10 since 24 * 10 - 240 < 0.0001
-    remaining = (currentBandType == 4 ? 2 : 3) -
-        (beforeDecimal.isEmpty ? 1 : beforeDecimal.length);
+    remaining = (currentBandType == 4 ? 2 : 3) - beforeDecimal.length;
     if (remaining.isNegative) remaining = 0;
     if (afterDecimal.length > 2) {
       afterDecimal = afterDecimal.sublist(0, 2);
