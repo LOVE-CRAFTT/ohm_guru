@@ -35,15 +35,21 @@ class _HomePageState extends State<HomePage> {
                   constraints: constraints,
                 ),
                 Divider(
-                  indent: (constraints.maxWidth > 900) ? 90.0 : 20.0,
-                  endIndent: (constraints.maxWidth > 900) ? 240.0 : 20,
+                  indent: (constraints.maxWidth > largeScreenWidthBreakpoint)
+                      ? 90.0
+                      : 20.0,
+                  endIndent: (constraints.maxWidth > largeScreenWidthBreakpoint)
+                      ? 240.0
+                      : 20,
                 ),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(width: 2, color: Colors.white54),
                   ),
-                  height: (constraints.maxWidth > 650) ? 800 : 1400,
-                  margin: (constraints.maxWidth > 900)
+                  height: (constraints.maxWidth > smallScreenWidthBreakpoint)
+                      ? 800
+                      : 1400,
+                  margin: (constraints.maxWidth > largeScreenWidthBreakpoint)
                       ? const EdgeInsets.fromLTRB(90, 40, 240, 10)
                       : const EdgeInsets.fromLTRB(20, 40, 20, 10),
                   child: Column(
@@ -51,6 +57,12 @@ class _HomePageState extends State<HomePage> {
                       const Expanded(
                         child: SizedBox(),
                       ),
+
+                      ///The TabBar synchronizes with the TabBarView.
+                      ///There has to be the same number of tabs as there are TabBarViews.
+                      ///The total number of tabs also has to be predefined at the higher level DefaultTabController
+                      ///As the user clicks between tabs, the [bandCount] variable is updated and
+                      ///the corresponding calculation page is built
                       TabBar(
                         tabs: bandTypes,
                         indicatorColor: const Color(0xff0058c5),

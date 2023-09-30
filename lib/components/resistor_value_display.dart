@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///Resistance text displayed in a concise manner
 class ResistorValueDisplay extends StatelessWidget {
   const ResistorValueDisplay({
     super.key,
@@ -21,6 +22,8 @@ class ResistorValueDisplay extends StatelessWidget {
               style: TextStyle(fontSize: 40.0),
             ),
           ),
+
+          ///The text is only displayed if the resistance is not null, and the resistance can be not null only when all the available bands have been given values
           if (displayResistanceString != null)
             Expanded(
               child: Text(

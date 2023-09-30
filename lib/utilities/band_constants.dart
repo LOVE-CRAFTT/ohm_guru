@@ -1,25 +1,43 @@
 import 'package:flutter/material.dart';
 
 int bandTypesCount = bandTypes.length;
+
+///set the globalManualResistance manually
 String globalManualResistance = "";
+
+///Max entry for a 4 band resistor
 const maxResistorValue4 = 99000000000;
+
+///Max entry for a 5 and 6 band resistor
 const maxResistorValue5And6 = 999000000000;
 
+///The width breakpoints work in two ways.
+///The [largeScreenWidthBreakpoint] indicates the length after which there is larger padding at the right end
+///but the main components don't fill the screen. This decision is for compactness.
+///Below this the main components of the page fill the screen
+const largeScreenWidthBreakpoint = 900;
+
+///The [smallScreenWidthBreakpoint] indicates the length after which the the calculation page is drawn in wide view
+///and below which the narrow view is drawn instead
+const smallScreenWidthBreakpoint = 650;
+
+///The resistor band types that can be used
 List<Text> bandTypes = const [
   Text("4 Band"),
   Text("5 Band"),
   Text("6 Band"),
 ];
 
-//=====================
+//==========INSTANCES OF EACH ENUM THAT WILL BE USED IN THIS PROJECT============
 BandDetails? selectedBand1;
 BandDetails? selectedBand2;
 BandDetails? selectedBand3;
 MultiplierDetails? selectedMultiplierBand;
 ToleranceDetails? selectedToleranceBand;
 PPMDetails? selectedPPMBand;
-//=====================
+//=======================SET GLOBALLY FOR PERSISTENCE OF VALUES=================
 
+///The details used for building a "normal" band
 enum BandDetails {
   black("Black", Colors.black, 0, Text("0")),
   brown("Brown", Colors.brown, 1, Text("1")),
@@ -53,6 +71,7 @@ enum BandDetails {
   final Text trailing;
 }
 
+///The details used for building a multiplier band
 enum MultiplierDetails {
   black("Black", Colors.black, 1, Text("×1 Ω")),
   brown("Brown", Colors.brown, 10, Text("×10 Ω")),
@@ -88,6 +107,7 @@ enum MultiplierDetails {
   final Text trailing;
 }
 
+///The details used for building a tolerance band
 enum ToleranceDetails {
   brown("Brown", Colors.brown, 1, Text("±1%")),
   red("Red", Colors.red, 2, Text("±2%")),
@@ -105,6 +125,7 @@ enum ToleranceDetails {
   final Text trailing;
 }
 
+///The details used for building a ppm band
 enum PPMDetails {
   brown("Brown", Colors.brown, 100, Text("100 ppm")),
   red("Red", Colors.red, 50, Text("50 ppm")),
@@ -128,7 +149,11 @@ enum PPMDetails {
 }
 
 var ohmUnits = ["Ω", "kΩ", "MΩ", "GΩ"];
+
+///[selectedOhmUnit] set to Ω by default
 String? selectedOhmUnit = ohmUnits.first;
+
+///Returns a list of dropdownmenu entries with [ohmUnits] as the "seed"
 List<DropdownMenuEntry<String>> buildOhmTypes = [
   for (var ohmUnit in ohmUnits)
     DropdownMenuEntry(

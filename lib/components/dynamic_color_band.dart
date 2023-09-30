@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ohm_guru/utilities/band_constants.dart';
 
+///Single band representing bands of a resistor.
+///Consists of a long container with either a color gradient or solid color. And a small box of variable width at the end with a solid color
+///Synchronises with a dropdown menu, so if a value is selected from the dropdown the color is updated
 class DynamicColorBand extends StatelessWidget {
   const DynamicColorBand({
     super.key,
@@ -21,7 +24,8 @@ class DynamicColorBand extends StatelessWidget {
   final ToleranceDetails? selectedTolerance;
   final PPMDetails? selectedPPM;
 
-  //======
+  ///Gets the color with which too fill the band when an entry is selected
+  ///Can be null
   Color? getLocalColor() {
     if (selectedBand != null) {
       return selectedBand?.color;
@@ -36,7 +40,7 @@ class DynamicColorBand extends StatelessWidget {
     }
   }
 
-  //======
+  ///gets the corresponding text at the end of the band
   Text? getLocalTrailing() {
     if (selectedBand != null) {
       return selectedBand?.trailing;
@@ -51,6 +55,7 @@ class DynamicColorBand extends StatelessWidget {
     }
   }
 
+  ///Allows for long text in the trailing section to be shown
   double? getTagWidth() {
     if (selectedMultiplier != null || selectedPPM != null) {
       return 60.0;
@@ -73,7 +78,7 @@ class DynamicColorBand extends StatelessWidget {
             height: height,
             width: 10.0,
             decoration: BoxDecoration(
-              // gradient: ,
+              /// if there is an available color there is a gradient
               gradient: getLocalColor() != null
                   ? LinearGradient(
                       begin: Alignment.topCenter,
@@ -85,6 +90,8 @@ class DynamicColorBand extends StatelessWidget {
                       ],
                     )
                   : null,
+
+              ///if there is not an available chosen color then it is a solid default color
               color: getLocalColor() == null ? const Color(0xffc5c5c5) : null,
             ),
           ),

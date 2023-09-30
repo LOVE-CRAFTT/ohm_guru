@@ -3,6 +3,8 @@ import 'package:ohm_guru/utilities/band_constants.dart';
 import 'package:ohm_guru/utilities/text_controllers.dart';
 import 'package:ohm_guru/utilities/custom_text_input_formatter.dart';
 
+///This combines the text-field for user input in numbers as well as the drop down menu indication the various ohm units
+///Specific entry format are in place using the input formatters
 class ManualEntry extends StatelessWidget {
   const ManualEntry({
     super.key,
@@ -11,12 +13,16 @@ class ManualEntry extends StatelessWidget {
     required this.constraints,
   });
 
+  ///Callback for when a unit is chosen from the dropdownmenu
   final void Function(String?)? onSelectOhmUnit;
+
+  ///Callback for when the text changes
   final void Function(String)? onTextChange;
   final BoxConstraints constraints;
 
   @override
   Widget build(BuildContext context) {
+    ///This calculation maintains the relative dimensions of the text-field and dropdown menu even as the window size changes
     double totalWidth = constraints.maxWidth;
     double textFieldWidth = (2 / 3) * totalWidth;
     double ohmUnitSelectorWidth = (1 / 3) * totalWidth;

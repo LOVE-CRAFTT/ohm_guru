@@ -9,6 +9,7 @@ import 'package:ohm_guru/components/dynamic_resistor_image.dart';
 import 'package:ohm_guru/components/resistor_value_display.dart';
 import 'package:ohm_guru/logic/resistor_logic.dart';
 
+///In the [WideView] the UI is displayed as a row with the user input on the left and the output on the right
 class WideView extends StatefulWidget {
   const WideView({
     super.key,
@@ -22,6 +23,8 @@ class _WideViewState extends State<WideView> {
   @override
   void initState() {
     super.initState();
+
+    ///This allows the resistance to be persistent across pages since it uses the same values during the function call
     setState(
       () {
         resistance = setAndGetResistance();
@@ -31,6 +34,9 @@ class _WideViewState extends State<WideView> {
 
   @override
   Widget build(BuildContext context) {
+    ///Once a band is selected, the corresponding selected band is set
+    ///and the resistance variable is set with the [setAndGetResistance] function
+    ///This method allows the user to select values arbitrarily and the value is shown only after required bands are set
     return Row(
       children: [
         Expanded(
@@ -43,6 +49,8 @@ class _WideViewState extends State<WideView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text("Resistor Parameters"),
+
+                    ///Band 1 "Normal band"
                     buildDropDownMenu(
                       constraints: constraints,
                       dropdownMenuEntries: buildBandColors(),
@@ -58,6 +66,8 @@ class _WideViewState extends State<WideView> {
                       selectedBand: selectedBand1,
                       controller: band1TextController,
                     ),
+
+                    ///Band 2 "Normal band"
                     buildDropDownMenu(
                       constraints: constraints,
                       dropdownMenuEntries: buildBandColors(),
@@ -73,6 +83,8 @@ class _WideViewState extends State<WideView> {
                       selectedBand: selectedBand2,
                       controller: band2TextController,
                     ),
+
+                    ///Band 3 "Normal Band", only displays if the currentBandType equals 4 or 5
                     if (currentBandType == 5 || currentBandType == 6)
                       buildDropDownMenu(
                         constraints: constraints,
@@ -89,6 +101,8 @@ class _WideViewState extends State<WideView> {
                         selectedBand: selectedBand3,
                         controller: band3TextController,
                       ),
+
+                    ///Multiplier band
                     buildDropDownMenu(
                       constraints: constraints,
                       dropdownMenuEntries: buildMultiplierBandColors(),
@@ -104,6 +118,8 @@ class _WideViewState extends State<WideView> {
                       selectedMultiplier: selectedMultiplierBand,
                       controller: multiplierBandTextController,
                     ),
+
+                    ///Tolerance Band
                     buildDropDownMenu(
                       constraints: constraints,
                       dropdownMenuEntries: buildToleranceBandColors(),
@@ -119,6 +135,8 @@ class _WideViewState extends State<WideView> {
                       selectedTolerance: selectedToleranceBand,
                       controller: toleranceBandTextController,
                     ),
+
+                    ///PPM Band that is drawn only if the currentBandType is 6
                     if (currentBandType == 6)
                       buildDropDownMenu(
                         constraints: constraints,
@@ -140,6 +158,8 @@ class _WideViewState extends State<WideView> {
                         setState(
                           () {
                             selectedOhmUnit = unit;
+
+                            ///recalculates the resistance based on the updated selectedOhmUnit
                             manualInputLogic(globalManualResistance);
                           },
                         );
