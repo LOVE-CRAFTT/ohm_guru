@@ -212,7 +212,7 @@ void decimalCalculation() {
       userEntryList = beforeDecimal;
       nonDecimalCalculation();
     } else {
-      ///If it is not greater than 0 then it is sufficient for the calculation and values after the decimal are discarded
+      ///If remaining is not greater than 0 then it is sufficient for the calculation and values after the decimal are discarded
       userEntryNum = getNewUserEntryNum(0);
       removeLeadingZerosList(beforeDecimal);
       userEntryList = beforeDecimal;
