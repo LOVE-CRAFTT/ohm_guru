@@ -190,7 +190,7 @@ void decimalCalculation() {
     /// entry is "cleaned" to .243 at the remove leading zeros section
     /// user entry is not equals null so we're in this section
     /// remaining = 1
-    /// 2 and 4 are moved to before decimal position (while beforeDecimal.length <= remaining && afterDecimal.isNotEmpty)
+    /// 2 and 4 are moved to before decimal position (remaining > 0 && afterDecimal.isNotEmpty)
     /// userEntryNum is set to 0.24 * 1000 = 240
     /// userEntryList is set to [2, 4]
     /// non decimal calculation is run with those values
@@ -202,9 +202,10 @@ void decimalCalculation() {
       afterDecimal = afterDecimal.sublist(0, 2);
     }
     if (remaining > 0) {
-      while (beforeDecimal.length <= remaining && afterDecimal.isNotEmpty) {
+      while (remaining > 0 && afterDecimal.isNotEmpty) {
         beforeDecimal.add(afterDecimal.first);
         afterDecimal.removeAt(0);
+        remaining--;
         count++;
       }
       userEntryNum = getNewUserEntryNum(count);
