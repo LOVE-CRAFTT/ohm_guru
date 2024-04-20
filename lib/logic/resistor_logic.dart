@@ -25,14 +25,14 @@ void setResistance() {
   if (currentBandType == 4) {
     weightedBand1Value =
         selectedBand1 == null ? null : selectedBand1!.value * 10;
-    weightedBand2Value = selectedBand2 == null ? null : selectedBand2!.value;
+    weightedBand2Value = selectedBand2?.value;
     weightedBand3Value = selectedBand3 == null ? null : 0;
   } else {
     weightedBand1Value =
         selectedBand1 == null ? null : selectedBand1!.value * 100;
     weightedBand2Value =
         selectedBand2 == null ? null : selectedBand2!.value * 10;
-    weightedBand3Value = selectedBand3 == null ? null : selectedBand3!.value;
+    weightedBand3Value = selectedBand3?.value;
   }
 }
 

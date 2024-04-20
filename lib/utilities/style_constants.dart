@@ -25,7 +25,7 @@ ButtonStyle? purchaseButtonTextStyle() {
   );
 }
 
-///Rounded reactangle with the foreground color set to black if the entry label is white or yellow (also for visibility)
+///Rounded rectangle with the foreground color set to black if the entry label is white or yellow (also for visibility)
 ButtonStyle? dropDownMenuEntryStyle({Color? color, required String label}) {
   return TextButton.styleFrom(
     backgroundColor: color,
