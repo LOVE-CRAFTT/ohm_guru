@@ -345,9 +345,12 @@ void clearRelevantText() {
 }
 
 void setNumToNullIfOverValue() {
-  if (userEntryNum != null && userEntryNum!.isNegative ||
-      userEntryNum! >
-          (currentBandType == 4 ? maxResistorValue4 : maxResistorValue5And6)) {
+  if (userEntryNum != null &&
+      (userEntryNum!.isNegative ||
+          userEntryNum! >
+              (currentBandType == 4
+                  ? maxResistorValue4
+                  : maxResistorValue5And6))) {
     num1 = num2 = num3 = multiplierNum = null;
   }
 }
