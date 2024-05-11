@@ -42,7 +42,7 @@ DropdownMenu buildDropDownMenu({
       filled: true,
       fillColor: getLocalColor(),
 
-      ///When the chosen color is yellow or white, the label text is not visible and this changes the text color to black to make it visible
+      ///When the chosen color is yellow or white, the label text is not visible so this changes the text color to black to make it visible
       ///This is a consistent theme across the project
       labelStyle: TextStyle(
         color:

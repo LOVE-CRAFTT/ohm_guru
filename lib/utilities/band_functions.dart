@@ -5,8 +5,7 @@ import 'package:ohm_guru/utilities/text_controllers.dart';
 
 ///Returns a list of dropdownmenu entries with a BandDetails enum as the "seed"
 List<DropdownMenuEntry<BandDetails>> buildBandColors() {
-  final List<DropdownMenuEntry<BandDetails>> bandEntries =
-      <DropdownMenuEntry<BandDetails>>[];
+  final List<DropdownMenuEntry<BandDetails>> bandEntries = [];
   for (final BandDetails color in BandDetails.values) {
     bandEntries.add(
       DropdownMenuEntry(
@@ -22,8 +21,7 @@ List<DropdownMenuEntry<BandDetails>> buildBandColors() {
 
 ///Returns a list of dropdownmenu entries with a MultiplierDetails enum as the "seed"
 List<DropdownMenuEntry<MultiplierDetails>> buildMultiplierBandColors() {
-  final List<DropdownMenuEntry<MultiplierDetails>> bandEntries =
-      <DropdownMenuEntry<MultiplierDetails>>[];
+  final List<DropdownMenuEntry<MultiplierDetails>> bandEntries = [];
   for (final MultiplierDetails color in MultiplierDetails.values) {
     bandEntries.add(
       DropdownMenuEntry(
@@ -39,8 +37,7 @@ List<DropdownMenuEntry<MultiplierDetails>> buildMultiplierBandColors() {
 
 ///Returns a list of dropdownmenu entries with a ToleranceDetails enum as the "seed"
 List<DropdownMenuEntry<ToleranceDetails>> buildToleranceBandColors() {
-  final List<DropdownMenuEntry<ToleranceDetails>> bandEntries =
-      <DropdownMenuEntry<ToleranceDetails>>[];
+  final List<DropdownMenuEntry<ToleranceDetails>> bandEntries = [];
   for (final ToleranceDetails color in ToleranceDetails.values) {
     bandEntries.add(
       DropdownMenuEntry(
@@ -56,8 +53,7 @@ List<DropdownMenuEntry<ToleranceDetails>> buildToleranceBandColors() {
 
 ///Returns a list of dropdownmenu entries with a PPMDetails enum as the "seed"
 List<DropdownMenuEntry<PPMDetails>> buildPPMBandColors() {
-  final List<DropdownMenuEntry<PPMDetails>> bandEntries =
-      <DropdownMenuEntry<PPMDetails>>[];
+  final List<DropdownMenuEntry<PPMDetails>> bandEntries = [];
   for (final PPMDetails color in PPMDetails.values) {
     bandEntries.add(
       DropdownMenuEntry(

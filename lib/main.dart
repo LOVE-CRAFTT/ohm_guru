@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           secondary: Color(0xff0058c5),
         ),
       ),
-      home: const HomePage(title: 'Resistor Color Code Calculator'),
+      home: const HomePage(),
     );
   }
 }

@@ -327,6 +327,7 @@ void setMultiplierNum() {
   total = workerNum1 + workerNum2 + workerNum3;
 
   multiplierNum = (userEntryNum != null &&
+          !userEntryNum!.isNegative &&
           userEntryNum! <=
               (currentBandType == 4
                   ? maxResistorValue4
@@ -344,7 +345,7 @@ void clearRelevantText() {
 }
 
 void setNumToNullIfOverValue() {
-  if (userEntryNum != null &&
+  if (userEntryNum != null && userEntryNum!.isNegative ||
       userEntryNum! >
           (currentBandType == 4 ? maxResistorValue4 : maxResistorValue5And6)) {
     num1 = num2 = num3 = multiplierNum = null;
@@ -353,11 +354,9 @@ void setNumToNullIfOverValue() {
 
 void clearTextIfOverValueOrEmptyEntry() {
   if (userEntryList.isEmpty ||
-      userEntryNum != null &&
-          userEntryNum! >
-              (currentBandType == 4
-                  ? maxResistorValue4
-                  : maxResistorValue5And6)) {
+      userEntryNum != null && userEntryNum!.isNegative ||
+      userEntryNum! >
+          (currentBandType == 4 ? maxResistorValue4 : maxResistorValue5And6)) {
     clearRelevantText();
   }
 }
